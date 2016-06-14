@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DPPhotoDetailsViewController">
+            <connections>
+                <outlet property="detailImageView" destination="s9f-FE-DKE" id="sVh-x5-tcj"/>
+                <outlet property="view" destination="1" id="sQX-Sc-Pdp"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="1" customClass="DPPhoneDetailsView">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="s9f-FE-DKE">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="s9f-FE-DKE" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="2YQ-A4-WKZ"/>
+                <constraint firstAttribute="trailing" secondItem="s9f-FE-DKE" secondAttribute="trailing" id="7KP-73-mbk"/>
+                <constraint firstItem="s9f-FE-DKE" firstAttribute="top" secondItem="1" secondAttribute="top" id="YJ0-NV-nDd"/>
+                <constraint firstAttribute="bottom" secondItem="s9f-FE-DKE" secondAttribute="bottom" id="rBD-M8-MYU"/>
+            </constraints>
+            <point key="canvasLocation" x="346" y="320"/>
+        </view>
+    </objects>
+</document>

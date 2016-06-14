@@ -1,0 +1,80 @@
+/* Localized versions of Info.plist keys */
+
+// Left TableView
+"DasPrototyp"="DP原型";
+"Projects"="所有项目";
+"Support"="联系作者";
+"Rate This App"="给予评价";
+"Donate"="捐助";
+
+// Center TableView
+"Rename"="重命名";
+"Share"="分享";
+"Delete"="删除";
+"Describe the project"="描述这个项目";
+"New Project"="新项目";
+"Enter Project name"="输入项目名字";
+"Rename Project"="重命名项目";
+"New Name"="新的名称";
+"Name"="名称";
+"Project Name"="项目名称";
+"No wifi connection"="没有连接上无线";
+"It may take you a lot of time sending an email with a big attachment"="这可能会花费你很多时间去发送一封带有大附件的邮件";
+"I changed my mind"="我改主意了";
+"I insist"="我坚持要这么做";
+"No content"="没有内容";
+"Mail saved"="邮件保存成功";
+"Mail failed"="邮件发送失败";
+"Mail sent"="邮件已经发送";
+"Pull to refresh..."="下拉刷新";
+"Release to refresh..."="释放刷新";
+"Loading..."="正在加载";
+
+// Project Detail
+"Back"="后退";
+"Edit"="编辑";
+"Done"="完成";
+"OK"="确认";
+"Cancel"="取消";
+"Tips"="提示";
+"Replace"="替代";
+"Take Photo"="拍照";
+"Album"="照片库";
+"Success"="成功";
+"Error"="错误";
+"Message"="消息";
+"Note"="笔记";
+
+// Link
+"LinkTo"="连接到";
+"push"="推入";
+"cover"="覆盖";
+"uncover"="揭开";
+"none"="无动效";
+"up"="向上";
+"down"="向下";
+"left"="向左";
+"right"="向右";
+"Enter Delay time"="请输入延迟时间";
+"Please input a float between 0 and 5"="请输入一个0到5的小数";
+"Input"="输入";
+"Delay Time"="延迟时间";
+"delay"="延迟";
+
+// Page Detail
+"Hold On..."="等等…";
+"Select a hotspot please"="请选择一个热点";
+"Add a hotspot please"="请增加一个热点";
+"Gesture"="手势";
+"PressDown"="单指按下";
+"LongPress"="单指长按";
+"SwipeLeft"="单指左滑";
+"SwipeUp"="单指上滑";
+"SwipeRight"="单指右滑";
+"SwipeDown"="单指下滑";
+"Rotate"="双指旋转";
+"Pinch"="双指捏";
+
+// Play Mode
+"Three fingers pressed once to return"="三指按下以后返回编辑页面";
+"Got it"="知道了";
