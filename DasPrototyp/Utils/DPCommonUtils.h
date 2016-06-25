@@ -7,10 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @interface DPCommonUtils : NSObject
 
 + (CGSize)rectSizeWithText:(NSString *)text
+               andFontSize:(CGFloat)fontSize;
++ (CGSize)rectSizeWithText:(NSString *)text
+                 withWidth:(CGFloat)width
                andFontSize:(CGFloat)fontSize;
 
 @end

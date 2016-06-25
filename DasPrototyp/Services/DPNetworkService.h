@@ -7,7 +7,22 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "DPBlockCallBackHeader.h"
+
+@class DPUserModel;
+
+typedef NS_ENUM (NSUInteger, DPHTTPMethod) {
+  GET,
+  POST,
+  PATCH,
+  PUT,
+  DELETE
+};
 
 @interface DPNetworkService : NSObject
+
+- (NSInteger)loginWithUserModel:(DPUserModel *)userModel
+                     completion:(resultCompletionHandler)completion;
+- (void)requestAphorismsCompletion:(resultCompletionHandler)completion;
 
 @end

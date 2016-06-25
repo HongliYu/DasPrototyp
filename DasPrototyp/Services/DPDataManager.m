@@ -118,30 +118,30 @@
 }
 
 // select
-- (void)selectMainViewModels:(mutableArrayComplitionHandler)complition {
+- (void)selectMainViewModels:(mutableArrayCompletionHandler)completion {
   dispatch_async(_dataQueue, ^{
-    if (complition) {
-      [self.dbRoot selectMainViewModels:complition];
+    if (completion) {
+      [self.dbRoot selectMainViewModels:completion];
     }
   });
 }
 
 - (void)selectPageViewModelsWithMainViewModelID:(NSString *)mainViewModelID
-                                     complition:(mutableArrayComplitionHandler)complition {
+                                     completion:(mutableArrayCompletionHandler)completion {
   dispatch_async(_dataQueue, ^{
-    if (mainViewModelID && complition) {
+    if (mainViewModelID && completion) {
       [self.dbRoot selectPageViewModelsWithMainViewModelID:mainViewModelID
-                                                complition:complition];
+                                                completion:completion];
     }
   });
 }
 
 - (void)selectMaskViewModelsWithPageViewModelID:(NSString *)pageViewModelID
-                                     complition:(mutableArrayComplitionHandler)complition {
+                                     completion:(mutableArrayCompletionHandler)completion {
   dispatch_async(_dataQueue, ^{
-    if (pageViewModelID && complition) {
+    if (pageViewModelID && completion) {
       [self.dbRoot selectMaskViewModelsWithPageViewModelID:pageViewModelID
-                                                complition:complition];
+                                                completion:completion];
     }
   });
 }

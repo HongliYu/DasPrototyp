@@ -50,11 +50,11 @@
         withPageViewModelID:(NSString *)pageViewModelID;
 
 // select
-- (void)selectMainViewModels:(mutableArrayComplitionHandler)complition;
+- (void)selectMainViewModels:(mutableArrayCompletionHandler)completion;
 - (void)selectPageViewModelsWithMainViewModelID:(NSString *)mainViewModelID
-                                     complition:(mutableArrayComplitionHandler)complition;
+                                     completion:(mutableArrayCompletionHandler)completion;
 - (void)selectMaskViewModelsWithPageViewModelID:(NSString *)pageViewModelID
-                                     complition:(mutableArrayComplitionHandler)complition;
+                                     completion:(mutableArrayCompletionHandler)completion;
 // persist
 - (void)persistMainViewModel:(DPMainViewModel *)mainViewModel;
 

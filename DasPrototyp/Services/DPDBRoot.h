@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "DPBlockCallBackHeader.h"
 
 @class DPMainViewModel;
 @class DPPageViewModel;
@@ -37,11 +38,11 @@
         withPageViewModelID:(NSString *)pageViewModelID;
 
 // select
-- (void)selectMainViewModels:(mutableArrayComplitionHandler)complition;
+- (void)selectMainViewModels:(mutableArrayCompletionHandler)completion;
 - (void)selectPageViewModelsWithMainViewModelID:(NSString *)mainViewModelID
-                                     complition:(mutableArrayComplitionHandler)complition;
+                                     completion:(mutableArrayCompletionHandler)completion;
 - (void)selectMaskViewModelsWithPageViewModelID:(NSString *)pageViewModelID
-                                     complition:(mutableArrayComplitionHandler)complition;
+                                     completion:(mutableArrayCompletionHandler)completion;
 #pragma mark - Persist
 - (void)persistMainViewModel:(DPMainViewModel *)mainViewModel;
 

@@ -12,6 +12,7 @@
 #import "DPPhotoCollectViewController.h"
 #import "DPHomeViewController.h"
 #import "SVPullToRefresh.h"
+#import "AFNetworking.h"
 
 @interface DPHomeBusiness()
 
@@ -246,7 +247,7 @@
     [alert addButton:NSLocalizedString(@"I insist", @"")
          actionBlock:^{
            [[DPMainManager sharedDPMainManager] createSharedArchive:mainViewModel
-                                                         complition:^(BOOL finished) {
+                                                         completion:^(BOOL finished) {
                                                            if (finished) {
                                                              dispatch_async(dispatch_get_main_queue(), ^{
                                                                [self sendEmail:mainViewModel];
@@ -264,7 +265,7 @@
               duration:0];
   } else {
     [[DPMainManager sharedDPMainManager] createSharedArchive:mainViewModel
-                                                  complition:^(BOOL finished) {
+                                                  completion:^(BOOL finished) {
                                                     if (finished) {
                                                       dispatch_async(dispatch_get_main_queue(), ^{
                                                         [self sendEmail:mainViewModel];

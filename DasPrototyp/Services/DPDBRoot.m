@@ -10,6 +10,7 @@
 #import "DPMainViewModel.h"
 #import "DPPageViewModel.h"
 #import "DPMaskViewModel.h"
+#import "FMDB.h"
 
 NSString *const kDPMainViewModelTableName = @"DPMAINVIEWMODEL";
 NSString *const kDPPageViewModelTableName = @"DPPAGEVIEWMODEL";
@@ -215,7 +216,7 @@ NSString *const kDPMaskViewModelTableName = @"DPMASKVIEWMODEL";
 }
 
 #pragma mark - Select
-- (void)selectMainViewModels:(mutableArrayComplitionHandler)complition {
+- (void)selectMainViewModels:(mutableArrayCompletionHandler)completion {
   NSString *sql = [NSString stringWithFormat:@"SELECT * FROM %@", kDPMainViewModelTableName];
   [self.databaseQueue inDatabase:^(FMDatabase *db) {
     NSMutableArray *rawMainViewModels = [[NSMutableArray alloc] init];
@@ -231,14 +232,14 @@ NSString *const kDPMaskViewModelTableName = @"DPMASKVIEWMODEL";
       [rawMainViewModels addObject:rawMainViewModelDictionary];
     }
     [resaultSet close];
-    if (complition) {
-      complition(rawMainViewModels);
+    if (completion) {
+      completion(rawMainViewModels);
     }
   }];
 }
 
 - (void)selectPageViewModelsWithMainViewModelID:(NSString *)mainViewModelID
-                                     complition:(mutableArrayComplitionHandler)complition {
+                                     completion:(mutableArrayCompletionHandler)completion {
   NSString *sql = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE main_view_model_id=?", kDPPageViewModelTableName];
   [self.databaseQueue inDatabase:^(FMDatabase *db) {
     NSMutableArray *rawPageViewModels = [[NSMutableArray alloc] init];
@@ -251,14 +252,14 @@ NSString *const kDPMaskViewModelTableName = @"DPMASKVIEWMODEL";
       [rawPageViewModels addObject:rawMainViewModelDictionary];
     }
     [resaultSet close];
-    if (complition) {
-      complition(rawPageViewModels);
+    if (completion) {
+      completion(rawPageViewModels);
     }
   }];
 }
 
 - (void)selectMaskViewModelsWithPageViewModelID:(NSString *)pageViewModelID
-                                     complition:(mutableArrayComplitionHandler)complition {
+                                     completion:(mutableArrayCompletionHandler)completion {
   NSString *sql = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE page_view_model_id=?", kDPMaskViewModelTableName];
   [self.databaseQueue inDatabase:^(FMDatabase *db) {
     NSMutableArray *rawMaskViewModels = [[NSMutableArray alloc] init];
@@ -280,8 +281,8 @@ NSString *const kDPMaskViewModelTableName = @"DPMASKVIEWMODEL";
       [rawMaskViewModels addObject:rawMainViewModelDictionary];
     }
     [resaultSet close];
-    if (complition) {
-      complition(rawMaskViewModels);
+    if (completion) {
+      completion(rawMaskViewModels);
     }
   }];
 }

@@ -122,7 +122,7 @@
   [mainManager configBaseDataWithPageMark:self.pageMark];
   [self.photoCollectionView setHidden:YES]; // hide the view before data is ready
   [mainManager restorePageViewModelsWithMainViewModelID:mainManager.currentMainViewModel.identifier
-                                             complition:^(BOOL finished) {
+                                             completion:^(BOOL finished) {
                                                if (finished) {
                                                  dispatch_async(dispatch_get_main_queue(), ^{
                                                    [self.photoCollectionView reloadData];

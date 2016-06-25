@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		10B61F8A5FF1FBCAA02E3124 /* libPods-DasPrototyp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AD680467D931C52BE3143B85 /* libPods-DasPrototyp.a */; };
-		828E75B21AA198F300136F74 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 828E75B41AA198F300136F74 /* InfoPlist.strings */; };
 		828E75B61AA199C700136F74 /* DPHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 828E75B81AA199C700136F74 /* DPHomeViewController.xib */; };
 		828E75BF1AA1A72F00136F74 /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 828E75BE1AA1A72F00136F74 /* Launch Screen.xib */; };
 		82A9F2D51A73511C001E236B /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82A9F2D31A73511C001E236B /* Crashlytics.framework */; };
@@ -17,12 +16,14 @@
 		82E79CFD1A7A362E00FA9B50 /* DPLinkCollectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82E79CFF1A7A362E00FA9B50 /* DPLinkCollectViewController.xib */; };
 		82E79D011A7A365000FA9B50 /* DPPhotoCollectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82E79D031A7A365000FA9B50 /* DPPhotoCollectViewController.xib */; };
 		82E79D051A7A52A800FA9B50 /* DPSupportViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82E79D071A7A52A800FA9B50 /* DPSupportViewController.xib */; };
+		A27CDA7F6F93FC8FE2DD40E3 /* libPods-DPTodayExtension.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 28651EB01700E8E2710E02C8 /* libPods-DPTodayExtension.a */; };
 		F707A0B21D0047DB00261E44 /* DPSideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = F707A0B11D0047DB00261E44 /* DPSideMenu.m */; };
 		F707A0B81D004BAF00261E44 /* DPImageCrop.m in Sources */ = {isa = PBXBuildFile; fileRef = F707A0B71D004BAF00261E44 /* DPImageCrop.m */; };
 		F707A0BB1D00508700261E44 /* DPDraggableButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F707A0BA1D00508700261E44 /* DPDraggableButton.m */; };
 		F707A0BE1D00538700261E44 /* DPDrawerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F707A0BD1D00538700261E44 /* DPDrawerViewController.m */; };
 		F707A0C11D00543700261E44 /* DPDropShadowView.m in Sources */ = {isa = PBXBuildFile; fileRef = F707A0C01D00543700261E44 /* DPDropShadowView.m */; };
 		F707A0C41D00727900261E44 /* UIViewController+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = F707A0C31D00727900261E44 /* UIViewController+Additions.m */; };
+		F715A8F11D17D0320028F485 /* DPUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F715A8F01D17D0320028F485 /* DPUserModel.m */; };
 		F72302DE1CD22C710099AA17 /* ACEExpandableTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F72302B91CD22C710099AA17 /* ACEExpandableTextCell.m */; };
 		F72302E31CD22C710099AA17 /* DKLiveBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = F72302C71CD22C710099AA17 /* DKLiveBlurView.m */; };
 		F72302E41CD22C710099AA17 /* ModalCloseButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F72302C91CD22C710099AA17 /* ModalCloseButton.m */; };
@@ -48,15 +49,30 @@
 		F764A9491CD62C7600876D15 /* DPNetworkService.m in Sources */ = {isa = PBXBuildFile; fileRef = F764A9481CD62C7600876D15 /* DPNetworkService.m */; };
 		F769481B1A25C734005E0764 /* DPBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F769481A1A25C734005E0764 /* DPBaseViewController.m */; };
 		F778EF031CFB861300C71AF8 /* DPHomeBusiness.m in Sources */ = {isa = PBXBuildFile; fileRef = F778EF021CFB861300C71AF8 /* DPHomeBusiness.m */; };
+		F77EC86C1D1CD1FF005765D6 /* DPCommonUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = F753241A1D0B34610009C71E /* DPCommonUtils.m */; };
+		F77EC86D1D1CD268005765D6 /* UIViewAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = F760ACE11A23769300E4961C /* UIViewAdditions.m */; };
+		F77EC86E1D1CD3ED005765D6 /* GDUIViewStyleMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = F760ACDD1A23769300E4961C /* GDUIViewStyleMaker.m */; };
+		F77EC86F1D1CD3F0005765D6 /* UIView+GDStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = F760ACDF1A23769300E4961C /* UIView+GDStyle.m */; };
+		F77EC8701D1CD4D3005765D6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7B9420818C9C64D009825D6 /* CoreGraphics.framework */; };
 		F7889E5C1CD8E4DA00E68450 /* DPDBRoot.m in Sources */ = {isa = PBXBuildFile; fileRef = F7889E5B1CD8E4DA00E68450 /* DPDBRoot.m */; };
 		F78E376C1CDDD82A006394AB /* NSDate+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = F78E376B1CDDD82A006394AB /* NSDate+Additions.m */; };
 		F78E37761CDDF63F006394AB /* DPMainTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F78E37741CDDF63F006394AB /* DPMainTableViewCell.m */; };
 		F792B9401CF5B07600D6712E /* PSTAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = F792B93F1CF5B07600D6712E /* PSTAlertController.m */; };
+		F79344311D1E48350064CC58 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F79344331D1E48350064CC58 /* InfoPlist.strings */; };
+		F79344371D1E49510064CC58 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F79344391D1E49510064CC58 /* Localizable.strings */; };
+		F793443D1D1E49930064CC58 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F793443F1D1E49930064CC58 /* InfoPlist.strings */; };
 		F79A56E718CDA29700CBBC7C /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F79A56E618CDA29700CBBC7C /* AVFoundation.framework */; };
 		F79AB8BD1CD1E47C00A0DC55 /* DPMainManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F79AB8BC1CD1E47C00A0DC55 /* DPMainManager.m */; };
 		F79AB8C61CD205B800A0DC55 /* NSString+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = F79AB8C51CD205B800A0DC55 /* NSString+Additions.m */; };
 		F79AB8C91CD2062600A0DC55 /* DPFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F79AB8C81CD2062600A0DC55 /* DPFileManager.m */; };
 		F79CD20E1D06F7F500C84D36 /* DPPhoneDetailsView.m in Sources */ = {isa = PBXBuildFile; fileRef = F79CD20D1D06F7F500C84D36 /* DPPhoneDetailsView.m */; };
+		F7AE0D781D1BB87900CF83B4 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7AE0D771D1BB87900CF83B4 /* NotificationCenter.framework */; };
+		F7AE0D7C1D1BB87900CF83B4 /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7AE0D7B1D1BB87900CF83B4 /* TodayViewController.m */; };
+		F7AE0D831D1BB87900CF83B4 /* DPTodayExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = F7AE0D761D1BB87900CF83B4 /* DPTodayExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		F7AE0D891D1C897E00CF83B4 /* DPNetworkService.m in Sources */ = {isa = PBXBuildFile; fileRef = F764A9481CD62C7600876D15 /* DPNetworkService.m */; };
+		F7AE0D8A1D1C8C8200CF83B4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7B9420618C9C64D009825D6 /* Foundation.framework */; };
+		F7AE0D8D1D1CAC0300CF83B4 /* DPAphorismsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F7AE0D8C1D1CAC0300CF83B4 /* DPAphorismsModel.m */; };
+		F7AE0D8E1D1CAC0300CF83B4 /* DPAphorismsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F7AE0D8C1D1CAC0300CF83B4 /* DPAphorismsModel.m */; };
 		F7B6101D1D0C282F00960C6E /* iPhone4sDemo.dparchive in Resources */ = {isa = PBXBuildFile; fileRef = F7B610191D0C282F00960C6E /* iPhone4sDemo.dparchive */; };
 		F7B6101E1D0C282F00960C6E /* iPhone5Demo.dparchive in Resources */ = {isa = PBXBuildFile; fileRef = F7B6101A1D0C282F00960C6E /* iPhone5Demo.dparchive */; };
 		F7B6101F1D0C282F00960C6E /* iPhone6Demo.dparchive in Resources */ = {isa = PBXBuildFile; fileRef = F7B6101B1D0C282F00960C6E /* iPhone6Demo.dparchive */; };
@@ -67,6 +83,7 @@
 		F7BEBB321CDF8DD700DD69B2 /* DPPhotoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F7BEBB301CDF8DD700DD69B2 /* DPPhotoCollectionViewCell.m */; };
 		F7BEBB331CDF8DD700DD69B2 /* DPPhotoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7BEBB311CDF8DD700DD69B2 /* DPPhotoCollectionViewCell.xib */; };
 		F7BEBB351CDF9D3700DD69B2 /* dp_iconfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F7BEBB341CDF9D3700DD69B2 /* dp_iconfont.ttf */; };
+		F7C336011D1E3F2000692149 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F73F2C1F1A237CD00085B9B7 /* Localizable.strings */; };
 		F7C6842F1D086C8E000760AD /* DPPhotoCollectBusiness.m in Sources */ = {isa = PBXBuildFile; fileRef = F7C6842E1D086C8E000760AD /* DPPhotoCollectBusiness.m */; };
 		F7C684321D086CAC000760AD /* DPPhotoDetailsBusiness.m in Sources */ = {isa = PBXBuildFile; fileRef = F7C684311D086CAC000760AD /* DPPhotoDetailsBusiness.m */; };
 		F7C684351D086CDF000760AD /* DPLinkCollectBusiness.m in Sources */ = {isa = PBXBuildFile; fileRef = F7C684341D086CDF000760AD /* DPLinkCollectBusiness.m */; };
@@ -96,6 +113,16 @@
 		F7F956201D07458E00CC5D1E /* DPEventSignalTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7F9561D1D07458E00CC5D1E /* DPEventSignalTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		F7AE0D811D1BB87900CF83B4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F7B941FB18C9C64D009825D6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F7AE0D751D1BB87900CF83B4;
+			remoteInfo = DPTodayExtension;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXCopyFilesBuildPhase section */
 		F73EB0551A35FD15005CA6CC /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -103,6 +130,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				F7AE0D831D1BB87900CF83B4 /* DPTodayExtension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -110,10 +138,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		17F08E9CC52BB88FEB474FBB /* Pods-DPTodayExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DPTodayExtension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DPTodayExtension/Pods-DPTodayExtension.debug.xcconfig"; sourceTree = "<group>"; };
 		2255B92098C8327BFA2090F1 /* Pods-DasPrototyp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DasPrototyp.release.xcconfig"; path = "Pods/Target Support Files/Pods-DasPrototyp/Pods-DasPrototyp.release.xcconfig"; sourceTree = "<group>"; };
+		28651EB01700E8E2710E02C8 /* libPods-DPTodayExtension.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DPTodayExtension.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7BA18F90F799DC43335CE7BB /* Pods-DPTodayExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DPTodayExtension.release.xcconfig"; path = "Pods/Target Support Files/Pods-DPTodayExtension/Pods-DPTodayExtension.release.xcconfig"; sourceTree = "<group>"; };
 		824175C45E8E072B813C9043 /* Pods-DasPrototyp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DasPrototyp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DasPrototyp/Pods-DasPrototyp.debug.xcconfig"; sourceTree = "<group>"; };
-		828E75B31AA198F300136F74 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
-		828E75B51AA198F500136F74 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		828E75B91AA199D600136F74 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/DPHomeViewController.xib; sourceTree = "<group>"; };
 		828E75BE1AA1A72F00136F74 /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Launch Screen.xib"; sourceTree = "<group>"; };
 		82A9F2D31A73511C001E236B /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
@@ -136,6 +165,9 @@
 		F707A0C01D00543700261E44 /* DPDropShadowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPDropShadowView.m; sourceTree = "<group>"; };
 		F707A0C21D00727900261E44 /* UIViewController+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Additions.h"; sourceTree = "<group>"; };
 		F707A0C31D00727900261E44 /* UIViewController+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Additions.m"; sourceTree = "<group>"; };
+		F715A8EF1D17D0320028F485 /* DPUserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPUserModel.h; sourceTree = "<group>"; };
+		F715A8F01D17D0320028F485 /* DPUserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPUserModel.m; sourceTree = "<group>"; };
+		F715A8F21D17D4010028F485 /* DPConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPConst.h; sourceTree = "<group>"; };
 		F72302B81CD22C710099AA17 /* ACEExpandableTextCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACEExpandableTextCell.h; sourceTree = "<group>"; };
 		F72302B91CD22C710099AA17 /* ACEExpandableTextCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACEExpandableTextCell.m; sourceTree = "<group>"; };
 		F72302C61CD22C710099AA17 /* DKLiveBlurView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKLiveBlurView.h; sourceTree = "<group>"; };
@@ -148,7 +180,6 @@
 		F72302CD1CD22C710099AA17 /* UIView+Screenshot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Screenshot.m"; sourceTree = "<group>"; };
 		F72302D51CD22C710099AA17 /* SZTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZTextView.h; sourceTree = "<group>"; };
 		F72302D61CD22C710099AA17 /* SZTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZTextView.m; sourceTree = "<group>"; };
-		F73F2C1D1A237CD00085B9B7 /* DasPrototyp-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "DasPrototyp-Info.plist"; sourceTree = "<group>"; };
 		F73F2C1E1A237CD00085B9B7 /* DasPrototyp-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DasPrototyp-Prefix.pch"; sourceTree = "<group>"; };
 		F73F2C201A237CD00085B9B7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F73F2C211A237CD00085B9B7 /* DPAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPAppDelegate.h; sourceTree = "<group>"; };
@@ -196,6 +227,12 @@
 		F78E37741CDDF63F006394AB /* DPMainTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPMainTableViewCell.m; sourceTree = "<group>"; };
 		F792B93E1CF5B07600D6712E /* PSTAlertController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSTAlertController.h; sourceTree = "<group>"; };
 		F792B93F1CF5B07600D6712E /* PSTAlertController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSTAlertController.m; sourceTree = "<group>"; };
+		F79344321D1E48350064CC58 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		F79344341D1E483B0064CC58 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		F79344381D1E49510064CC58 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		F793443A1D1E49530064CC58 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		F793443E1D1E49930064CC58 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		F79344401D1E49940064CC58 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		F79A56E618CDA29700CBBC7C /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		F79AB8BB1CD1E47C00A0DC55 /* DPMainManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPMainManager.h; sourceTree = "<group>"; };
 		F79AB8BC1CD1E47C00A0DC55 /* DPMainManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPMainManager.m; sourceTree = "<group>"; };
@@ -205,6 +242,14 @@
 		F79AB8C81CD2062600A0DC55 /* DPFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPFileManager.m; sourceTree = "<group>"; };
 		F79CD20C1D06F7F500C84D36 /* DPPhoneDetailsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPPhoneDetailsView.h; sourceTree = "<group>"; };
 		F79CD20D1D06F7F500C84D36 /* DPPhoneDetailsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPPhoneDetailsView.m; sourceTree = "<group>"; };
+		F7AE0D761D1BB87900CF83B4 /* DPTodayExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = DPTodayExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		F7AE0D771D1BB87900CF83B4 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		F7AE0D7A1D1BB87900CF83B4 /* TodayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TodayViewController.h; sourceTree = "<group>"; };
+		F7AE0D7B1D1BB87900CF83B4 /* TodayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TodayViewController.m; sourceTree = "<group>"; };
+		F7AE0D871D1BBB3800CF83B4 /* DasPrototyp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = DasPrototyp.entitlements; sourceTree = "<group>"; };
+		F7AE0D881D1BBCC500CF83B4 /* DPTodayExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = DPTodayExtension.entitlements; sourceTree = "<group>"; };
+		F7AE0D8B1D1CAC0300CF83B4 /* DPAphorismsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPAphorismsModel.h; sourceTree = "<group>"; };
+		F7AE0D8C1D1CAC0300CF83B4 /* DPAphorismsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPAphorismsModel.m; sourceTree = "<group>"; };
 		F7B610191D0C282F00960C6E /* iPhone4sDemo.dparchive */ = {isa = PBXFileReference; lastKnownFileType = file; path = iPhone4sDemo.dparchive; sourceTree = "<group>"; };
 		F7B6101A1D0C282F00960C6E /* iPhone5Demo.dparchive */ = {isa = PBXFileReference; lastKnownFileType = file; path = iPhone5Demo.dparchive; sourceTree = "<group>"; };
 		F7B6101B1D0C282F00960C6E /* iPhone6Demo.dparchive */ = {isa = PBXFileReference; lastKnownFileType = file; path = iPhone6Demo.dparchive; sourceTree = "<group>"; };
@@ -217,6 +262,8 @@
 		F7BEBB301CDF8DD700DD69B2 /* DPPhotoCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPPhotoCollectionViewCell.m; sourceTree = "<group>"; };
 		F7BEBB311CDF8DD700DD69B2 /* DPPhotoCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DPPhotoCollectionViewCell.xib; sourceTree = "<group>"; };
 		F7BEBB341CDF9D3700DD69B2 /* dp_iconfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = dp_iconfont.ttf; sourceTree = "<group>"; };
+		F7C336081D1E45D700692149 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F7C3360A1D1E463000692149 /* DasPrototyp-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "DasPrototyp-Info.plist"; sourceTree = "<group>"; };
 		F7C6842D1D086C8E000760AD /* DPPhotoCollectBusiness.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPPhotoCollectBusiness.h; sourceTree = "<group>"; };
 		F7C6842E1D086C8E000760AD /* DPPhotoCollectBusiness.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPPhotoCollectBusiness.m; sourceTree = "<group>"; };
 		F7C684301D086CAC000760AD /* DPPhotoDetailsBusiness.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPPhotoDetailsBusiness.h; sourceTree = "<group>"; };
@@ -270,6 +317,17 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		F7AE0D731D1BB87900CF83B4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F77EC8701D1CD4D3005765D6 /* CoreGraphics.framework in Frameworks */,
+				F7AE0D8A1D1C8C8200CF83B4 /* Foundation.framework in Frameworks */,
+				F7AE0D781D1BB87900CF83B4 /* NotificationCenter.framework in Frameworks */,
+				A27CDA7F6F93FC8FE2DD40E3 /* libPods-DPTodayExtension.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F7B9420018C9C64D009825D6 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -297,6 +355,8 @@
 			children = (
 				824175C45E8E072B813C9043 /* Pods-DasPrototyp.debug.xcconfig */,
 				2255B92098C8327BFA2090F1 /* Pods-DasPrototyp.release.xcconfig */,
+				17F08E9CC52BB88FEB474FBB /* Pods-DPTodayExtension.debug.xcconfig */,
+				7BA18F90F799DC43335CE7BB /* Pods-DPTodayExtension.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -372,18 +432,19 @@
 		F73F2C1C1A237CD00085B9B7 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				F7C3360A1D1E463000692149 /* DasPrototyp-Info.plist */,
 				F7BEBB341CDF9D3700DD69B2 /* dp_iconfont.ttf */,
 				828E75BE1AA1A72F00136F74 /* Launch Screen.xib */,
 				F73F2C2A1A237EC80085B9B7 /* DPMainMacro.h */,
 				F78E376D1CDDE71A006394AB /* DPBlockCallBackHeader.h */,
-				F73F2C1D1A237CD00085B9B7 /* DasPrototyp-Info.plist */,
+				F715A8F21D17D4010028F485 /* DPConst.h */,
 				F73F2C1E1A237CD00085B9B7 /* DasPrototyp-Prefix.pch */,
 				F73F2C211A237CD00085B9B7 /* DPAppDelegate.h */,
 				F73F2C221A237CD00085B9B7 /* DPAppDelegate.m */,
 				F73F2C241A237CD00085B9B7 /* main.m */,
 				F73F2C231A237CD00085B9B7 /* Images.xcassets */,
+				F79344331D1E48350064CC58 /* InfoPlist.strings */,
 				F73F2C1F1A237CD00085B9B7 /* Localizable.strings */,
-				828E75B41AA198F300136F74 /* InfoPlist.strings */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -391,6 +452,7 @@
 		F760AC651A23769300E4961C /* DasPrototyp */ = {
 			isa = PBXGroup;
 			children = (
+				F7AE0D871D1BBB3800CF83B4 /* DasPrototyp.entitlements */,
 				F7E9272C1A23910B0063B87D /* Models */,
 				F7E9271A1A2390AA0063B87D /* Views */,
 				F7E926EB1A2390A30063B87D /* Controllers */,
@@ -487,12 +549,28 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		F7AE0D791D1BB87900CF83B4 /* DPTodayExtension */ = {
+			isa = PBXGroup;
+			children = (
+				F7AE0D881D1BBCC500CF83B4 /* DPTodayExtension.entitlements */,
+				F7AE0D7A1D1BB87900CF83B4 /* TodayViewController.h */,
+				F7AE0D7B1D1BB87900CF83B4 /* TodayViewController.m */,
+				F7AE0D8B1D1CAC0300CF83B4 /* DPAphorismsModel.h */,
+				F7AE0D8C1D1CAC0300CF83B4 /* DPAphorismsModel.m */,
+				F7C336081D1E45D700692149 /* Info.plist */,
+				F79344391D1E49510064CC58 /* Localizable.strings */,
+				F793443F1D1E49930064CC58 /* InfoPlist.strings */,
+			);
+			path = DPTodayExtension;
+			sourceTree = "<group>";
+		};
 		F7B941FA18C9C64D009825D6 = {
 			isa = PBXGroup;
 			children = (
 				82A9F2D31A73511C001E236B /* Crashlytics.framework */,
 				82A9F2D41A73511C001E236B /* Fabric.framework */,
 				F760AC651A23769300E4961C /* DasPrototyp */,
+				F7AE0D791D1BB87900CF83B4 /* DPTodayExtension */,
 				F7B9420518C9C64D009825D6 /* Frameworks */,
 				F7B9420418C9C64D009825D6 /* Products */,
 				0282742779D3366A813B528C /* Pods */,
@@ -503,6 +581,7 @@
 			isa = PBXGroup;
 			children = (
 				F7B9420318C9C64D009825D6 /* DasPrototyp.app */,
+				F7AE0D761D1BB87900CF83B4 /* DPTodayExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -520,6 +599,8 @@
 				F7B9420818C9C64D009825D6 /* CoreGraphics.framework */,
 				F7B9420A18C9C64D009825D6 /* UIKit.framework */,
 				AD680467D931C52BE3143B85 /* libPods-DasPrototyp.a */,
+				F7AE0D771D1BB87900CF83B4 /* NotificationCenter.framework */,
+				28651EB01700E8E2710E02C8 /* libPods-DPTodayExtension.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -614,6 +695,8 @@
 				F7F6AB4B1CE398E8009989D1 /* DPMaskModel.m */,
 				F7F6AB4C1CE398E8009989D1 /* DPPageModel.h */,
 				F7F6AB4D1CE398E8009989D1 /* DPPageModel.m */,
+				F715A8EF1D17D0320028F485 /* DPUserModel.h */,
+				F715A8F01D17D0320028F485 /* DPUserModel.m */,
 			);
 			path = RawModels;
 			sourceTree = "<group>";
@@ -634,6 +717,26 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		F7AE0D751D1BB87900CF83B4 /* DPTodayExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F7AE0D861D1BB87900CF83B4 /* Build configuration list for PBXNativeTarget "DPTodayExtension" */;
+			buildPhases = (
+				52BC2BB7C639A79C584F60AC /* 📦 Check Pods Manifest.lock */,
+				F7AE0D721D1BB87900CF83B4 /* Sources */,
+				F7AE0D731D1BB87900CF83B4 /* Frameworks */,
+				F7AE0D741D1BB87900CF83B4 /* Resources */,
+				53090D71DA2BDB4F82A83C0D /* 📦 Embed Pods Frameworks */,
+				B093F69F0B3FDDD1873C315F /* 📦 Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DPTodayExtension;
+			productName = DPTodayExtension;
+			productReference = F7AE0D761D1BB87900CF83B4 /* DPTodayExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		F7B9420218C9C64D009825D6 /* DasPrototyp */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F7B9422F18C9C64D009825D6 /* Build configuration list for PBXNativeTarget "DasPrototyp" */;
@@ -650,6 +753,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				F7AE0D821D1BB87900CF83B4 /* PBXTargetDependency */,
 			);
 			name = DasPrototyp;
 			productName = hlyuPOP;
@@ -666,8 +770,22 @@
 				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = HongliYu;
 				TargetAttributes = {
+					F7AE0D751D1BB87900CF83B4 = {
+						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = FC9QT6TC28;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
+					};
 					F7B9420218C9C64D009825D6 = {
 						DevelopmentTeam = FC9QT6TC28;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -678,6 +796,7 @@
 			knownRegions = (
 				en,
 				"zh-Hans",
+				Base,
 			);
 			mainGroup = F7B941FA18C9C64D009825D6;
 			productRefGroup = F7B9420418C9C64D009825D6 /* Products */;
@@ -685,16 +804,26 @@
 			projectRoot = "";
 			targets = (
 				F7B9420218C9C64D009825D6 /* DasPrototyp */,
+				F7AE0D751D1BB87900CF83B4 /* DPTodayExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		F7AE0D741D1BB87900CF83B4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F7C336011D1E3F2000692149 /* Localizable.strings in Resources */,
+				F793443D1D1E49930064CC58 /* InfoPlist.strings in Resources */,
+				F79344371D1E49510064CC58 /* Localizable.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F7B9420118C9C64D009825D6 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				828E75B21AA198F300136F74 /* InfoPlist.strings in Resources */,
 				F7BEBB331CDF8DD700DD69B2 /* DPPhotoCollectionViewCell.xib in Resources */,
 				F7BEBB351CDF9D3700DD69B2 /* dp_iconfont.ttf in Resources */,
 				F7B6101F1D0C282F00960C6E /* iPhone6Demo.dparchive in Resources */,
@@ -705,6 +834,7 @@
 				F73F2C261A237CD00085B9B7 /* Localizable.strings in Resources */,
 				F7E927191A2390A30063B87D /* DPTakePhotosViewController.xib in Resources */,
 				F7B6101D1D0C282F00960C6E /* iPhone4sDemo.dparchive in Resources */,
+				F79344311D1E48350064CC58 /* InfoPlist.strings in Resources */,
 				82E79D051A7A52A800FA9B50 /* DPSupportViewController.xib in Resources */,
 				F7E9270F1A2390A30063B87D /* DPPhotoDetailsViewController.xib in Resources */,
 				F7B610201D0C282F00960C6E /* iPhone6PlusDemo.dparchive in Resources */,
@@ -749,6 +879,36 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		52BC2BB7C639A79C584F60AC /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		53090D71DA2BDB4F82A83C0D /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DPTodayExtension/Pods-DPTodayExtension-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		708358183B41912F5F5C5AFD /* 📦 Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -778,13 +938,43 @@
 			shellPath = /bin/sh;
 			shellScript = "./Fabric.framework/run ab19721fa70a9eb66ab51ca19ffec9c2f56fde52 006a95af9f8189a54eb229abfdfd897f14d02af6720b357ca3e72618e092b1d8";
 		};
+		B093F69F0B3FDDD1873C315F /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DPTodayExtension/Pods-DPTodayExtension-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		F7AE0D721D1BB87900CF83B4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F77EC86E1D1CD3ED005765D6 /* GDUIViewStyleMaker.m in Sources */,
+				F77EC86C1D1CD1FF005765D6 /* DPCommonUtils.m in Sources */,
+				F77EC86D1D1CD268005765D6 /* UIViewAdditions.m in Sources */,
+				F7AE0D891D1C897E00CF83B4 /* DPNetworkService.m in Sources */,
+				F7AE0D7C1D1BB87900CF83B4 /* TodayViewController.m in Sources */,
+				F77EC86F1D1CD3F0005765D6 /* UIView+GDStyle.m in Sources */,
+				F7AE0D8E1D1CAC0300CF83B4 /* DPAphorismsModel.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F7B941FF18C9C64D009825D6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F7AE0D8D1D1CAC0300CF83B4 /* DPAphorismsModel.m in Sources */,
 				F79AB8C61CD205B800A0DC55 /* NSString+Additions.m in Sources */,
 				F79AB8BD1CD1E47C00A0DC55 /* DPMainManager.m in Sources */,
 				F7F6AB571CE398E8009989D1 /* DPPageModel.m in Sources */,
@@ -818,6 +1008,7 @@
 				F7BEBB321CDF8DD700DD69B2 /* DPPhotoCollectionViewCell.m in Sources */,
 				F769481B1A25C734005E0764 /* DPBaseViewController.m in Sources */,
 				F753241B1D0B34610009C71E /* DPCommonUtils.m in Sources */,
+				F715A8F11D17D0320028F485 /* DPUserModel.m in Sources */,
 				F764A9491CD62C7600876D15 /* DPNetworkService.m in Sources */,
 				F760AD1D1A23769300E4961C /* UIView+GDStyle.m in Sources */,
 				F7F9561E1D07458E00CC5D1E /* DPEventSignalComponent.m in Sources */,
@@ -846,16 +1037,15 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXVariantGroup section */
-		828E75B41AA198F300136F74 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				828E75B31AA198F300136F74 /* zh-Hans */,
-				828E75B51AA198F500136F74 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
+/* Begin PBXTargetDependency section */
+		F7AE0D821D1BB87900CF83B4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F7AE0D751D1BB87900CF83B4 /* DPTodayExtension */;
+			targetProxy = F7AE0D811D1BB87900CF83B4 /* PBXContainerItemProxy */;
 		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
 		828E75B81AA199C700136F74 /* DPHomeViewController.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -919,9 +1109,85 @@
 			name = DPMainTableViewCell.xib;
 			sourceTree = "<group>";
 		};
+		F79344331D1E48350064CC58 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F79344321D1E48350064CC58 /* zh-Hans */,
+				F79344341D1E483B0064CC58 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		F79344391D1E49510064CC58 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F79344381D1E49510064CC58 /* en */,
+				F793443A1D1E49530064CC58 /* zh-Hans */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		F793443F1D1E49930064CC58 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F793443E1D1E49930064CC58 /* en */,
+				F79344401D1E49940064CC58 /* zh-Hans */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		F7AE0D841D1BB87900CF83B4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 17F08E9CC52BB88FEB474FBB /* Pods-DPTodayExtension.debug.xcconfig */;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_ENTITLEMENTS = DPTodayExtension/DPTodayExtension.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = DPTodayExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.HongliYu.DasPrototyp.DPTodayExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		F7AE0D851D1BB87900CF83B4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7BA18F90F799DC43335CE7BB /* Pods-DPTodayExtension.release.xcconfig */;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_ENTITLEMENTS = DPTodayExtension/DPTodayExtension.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = DPTodayExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = com.HongliYu.DasPrototyp.DPTodayExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 		F7B9422D18C9C64D009825D6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1003,8 +1269,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Hongli Yu (96A6PSQDK2)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Hongli Yu (96A6PSQDK2)";
+				CODE_SIGN_ENTITLEMENTS = DasPrototyp/DasPrototyp.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1020,7 +1287,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.HongliYu.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = DasPrototyp;
-				PROVISIONING_PROFILE = "88592302-e662-4f32-ab82-20d7cd581fe6";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1031,8 +1298,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Hongli Yu (FC9QT6TC28)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Hongli Yu (FC9QT6TC28)";
+				CODE_SIGN_ENTITLEMENTS = DasPrototyp/DasPrototyp.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1044,7 +1312,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.HongliYu.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = DasPrototyp;
-				PROVISIONING_PROFILE = "a82c1ff4-e3bf-4781-9a5c-67627516928a";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -1052,6 +1320,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		F7AE0D861D1BB87900CF83B4 /* Build configuration list for PBXNativeTarget "DPTodayExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F7AE0D841D1BB87900CF83B4 /* Debug */,
+				F7AE0D851D1BB87900CF83B4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		F7B941FE18C9C64D009825D6 /* Build configuration list for PBXProject "DasPrototyp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

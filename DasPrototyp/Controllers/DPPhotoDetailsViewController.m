@@ -83,7 +83,7 @@ static const float kDragLinkPadding = 8.f;
 - (void)configBaseUI {
   [[DPMainManager sharedDPMainManager] imageWithProjectTitle:[DPMainManager sharedDPMainManager].currentMainViewModel.title
                                                    imageName:[DPMainManager sharedDPMainManager].currentPageViewModel.imageName
-                                                  complition:^(UIImage *image) {
+                                                  completion:^(UIImage *image) {
                                                     dispatch_async(dispatch_get_main_queue(), ^{
                                                       self.detailImageView.image = image;
                                                     });
@@ -236,7 +236,7 @@ static const float kDragLinkPadding = 8.f;
   DPMainManager *mainManager = [DPMainManager sharedDPMainManager];
   __weak typeof(DPMainManager *) weakMainManager = mainManager;
   [mainManager restoreMaskViewModelsWithPageViewModelID:mainManager.currentPageViewModel.identifier
-                                             complition:^(BOOL finished) {
+                                             completion:^(BOOL finished) {
                                                if (finished) {
                                                  dispatch_async(dispatch_get_main_queue(), ^{
                                                    __strong typeof(DPMainManager *) strongMainManager = weakMainManager;

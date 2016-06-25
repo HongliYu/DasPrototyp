@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "DPBlockCallBackHeader.h"
 
 @class DPMainViewModel;
 @class DPHomeViewController;
@@ -29,11 +30,11 @@ DEFINE_SINGLETON_FOR_HEADER(DPMainManager)
 // mail attachemnt
 - (void)checkNewProjectWithDirectory:(NSString *)directory;
 - (void)createSharedArchive:(DPMainViewModel *)mainViewModel
-                 complition:(finishedComplitionHandler)complition;
+                 completion:(finishedCompletionHandler)completion;
 @property (nonatomic, copy) void(^addProjectFromMailCallBack)();
 
 // play mode
-- (void)enterPlayMode:(finishedComplitionHandler)complition;
+- (void)enterPlayMode:(finishedCompletionHandler)completion;
 - (void)exitPlayMode;
 @property (nonatomic, assign, getter=isDoingAnimation) BOOL doingAnimation; // animation lock
 - (void)enterAnimationMode;
@@ -54,7 +55,7 @@ DEFINE_SINGLETON_FOR_HEADER(DPMainManager)
                                   imageName:(NSString *)imageName;
 - (void)imageWithProjectTitle:(NSString *)title
                     imageName:(NSString *)imageName
-                   complition:(void (^)(UIImage *image))complition;
+                   completion:(void (^)(UIImage *image))completion;
 
 @property (nonatomic, strong, readonly) NSMutableArray *mainViewModels;
 @property (nonatomic, strong, readonly) DPMainViewModel *currentMainViewModel;
@@ -75,7 +76,7 @@ DEFINE_SINGLETON_FOR_HEADER(DPMainManager)
                   withTitle:(NSString *)title;
 - (void)updateMainViewModel:(DPMainViewModel *)mainViewModel
                 withComment:(NSString *)comment;
-- (void)restoreMainViewModels:(finishedComplitionHandler)complition;
+- (void)restoreMainViewModels:(finishedCompletionHandler)completion;
 - (void)persistMainViewModel;
 
 - (void)addPageViewModel:(DPPageViewModel *)pageViewModel;
@@ -83,7 +84,7 @@ DEFINE_SINGLETON_FOR_HEADER(DPMainManager)
 - (void)updatePageViewModel:(DPPageViewModel *)pageViewModel
         withMainViewModelID:(NSString *)mainViewModelID;
 - (void)restorePageViewModelsWithMainViewModelID:(NSString *)mainViewModelID
-                                      complition:(finishedComplitionHandler)complition;
+                                      completion:(finishedCompletionHandler)completion;
 
 - (void)addMaskViewModel:(DPMaskViewModel *)maskViewModel;
 - (void)removeMaskViewModel:(DPMaskViewModel *)maskViewModel;
@@ -91,6 +92,9 @@ DEFINE_SINGLETON_FOR_HEADER(DPMainManager)
         withPageViewModelID:(NSString *)pageViewModelID;
 - (void)updateAllMaskViewModels; // sync selected with database
 - (void)restoreMaskViewModelsWithPageViewModelID:(NSString *)pageViewModelID
-                                      complition:(finishedComplitionHandler)complition;
+                                      completion:(finishedCompletionHandler)completion;
+
+#pragma mark - Network
+- (void)requestAphorismsCompletion:(resultCompletionHandler)completion;
 
 @end

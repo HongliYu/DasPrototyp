@@ -87,7 +87,7 @@ static void *MainTableViewCellContextComment = &MainTableViewCellContextComment;
   if ([_mainViewModel.thumbnailName isValid]) {
     [[DPMainManager sharedDPMainManager] imageWithProjectTitle:_mainViewModel.title
                                                      imageName:_mainViewModel.thumbnailName
-                                                    complition:^(UIImage *image) {
+                                                    completion:^(UIImage *image) {
                                                       dispatch_async(dispatch_get_main_queue(), ^{
                                                         if (image) {
                                                           self.thumbnailImageView.image = image;

@@ -90,7 +90,7 @@ static void *PhotoCollectionViewCellContext = &PhotoCollectionViewCellContext;
   }
   [[DPMainManager sharedDPMainManager] imageWithProjectTitle:[DPMainManager sharedDPMainManager].currentMainViewModel.title
                                                    imageName:_pageViewModel.imageName
-                                                  complition:^(UIImage *image) {
+                                                  completion:^(UIImage *image) {
                                                     if (image) {
                                                       dispatch_async(dispatch_get_main_queue(), ^{
                                                         self.backgroundImageView.image = image;

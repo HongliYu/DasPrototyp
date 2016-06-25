@@ -8,6 +8,7 @@
 
 #import "DPMainManager.h"
 #import "DPDataManager.h"
+#import "DPNetworkService.h"
 #import "DPHomeViewController.h"
 #import "DPMainViewModel.h"
 #import "DPPageViewModel.h"
@@ -21,6 +22,7 @@ NSString *const kPhotoCellIdentifier = @"DPPhotoCollectionViewCell";
 
 @property (nonatomic, strong, readwrite) NSMutableArray *mainViewModels;
 @property (nonatomic, strong, readwrite) DPDataManager *dataManager;
+@property (nonatomic, strong, readwrite) DPNetworkService *networkService;
 @property (nonatomic, strong, readwrite) DPMainViewModel *currentMainViewModel;
 @property (nonatomic, strong, readwrite) DPMaskViewModel *currentMaskViewModel;
 @property (nonatomic, strong, readwrite) DPPageViewModel *currentPageViewModel;
@@ -155,10 +157,10 @@ DEFINE_SINGLETON_FOR_CLASS(DPMainManager)
 }
 
 - (void)createReferenceTreeWithMainViewModel:(DPMainViewModel *)mainViewModel
-                                  complition:(finishedComplitionHandler)complition {
+                                  completion:(finishedCompletionHandler)completion {
   if (!mainViewModel.pageViewModels) {
     [self.dataManager selectPageViewModelsWithMainViewModelID:mainViewModel.identifier
-                                                   complition:^(NSMutableArray *mutableArrayResult) {
+                                                   completion:^(NSMutableArray *mutableArrayResult) {
                                                      for (NSDictionary *rawPageViewModelDictionary in mutableArrayResult) {
                                                        DPPageViewModel *pageViewModel = [[DPPageViewModel alloc] initWithSeparatedDictionary:rawPageViewModelDictionary];
                                                        if (![mainViewModel.pageViewModels containsObject:pageViewModel]) {
@@ -167,32 +169,32 @@ DEFINE_SINGLETON_FOR_CLASS(DPMainManager)
                                                      }
                                                      if (mainViewModel.pageViewModels) {
                                                        [self createReferenceTreeWithPageViewModels:mainViewModel.pageViewModels
-                                                                                        complition:^(BOOL finished) {
-                                                                                          if (finished && complition) {
-                                                                                            complition(YES);
+                                                                                        completion:^(BOOL finished) {
+                                                                                          if (finished && completion) {
+                                                                                            completion(YES);
                                                                                           }
                                                                                         }];
                                                      }
                                                    }];
   } else {
     [self createReferenceTreeWithPageViewModels:mainViewModel.pageViewModels
-                                     complition:^(BOOL finished) {
-                                       if (finished && complition) {
-                                         complition(YES);
+                                     completion:^(BOOL finished) {
+                                       if (finished && completion) {
+                                         completion(YES);
                                        }
                                      }];
   }
 }
 
 - (void)createReferenceTreeWithPageViewModels:(NSMutableArray *)pageViewModels
-                                   complition:(finishedComplitionHandler)complition {
+                                   completion:(finishedCompletionHandler)completion {
   dispatch_queue_t concurrentQueue = dispatch_queue_create("com.hongliyu.dasprototyp.reference_tree", DISPATCH_QUEUE_CONCURRENT);
   dispatch_queue_t notifyQueue = dispatch_get_main_queue();
   dispatch_group_t dispatchGroup = dispatch_group_create();
   for (DPPageViewModel *pageViewModel in pageViewModels) {
     dispatch_group_async(dispatchGroup, concurrentQueue, ^{
       [self.dataManager selectMaskViewModelsWithPageViewModelID:pageViewModel.identifier
-                                                     complition:^(NSMutableArray *mutableArrayResult) {
+                                                     completion:^(NSMutableArray *mutableArrayResult) {
                                                        for (NSDictionary *rawMaskViewModelDictionary in mutableArrayResult) {
                                                          DPMaskViewModel *maskViewModel = [[DPMaskViewModel alloc] initWithSeparatedDictionary:rawMaskViewModelDictionary];
                                                          if (![pageViewModel.maskViewModels containsObject:maskViewModel]) {
@@ -203,19 +205,19 @@ DEFINE_SINGLETON_FOR_CLASS(DPMainManager)
     });
   }
   dispatch_group_notify(dispatchGroup, notifyQueue, ^{
-    if (complition) {
-      complition(YES);
+    if (completion) {
+      completion(YES);
     }
   });
 }
 
 // play mode
-- (void)enterPlayMode:(finishedComplitionHandler)complition {
+- (void)enterPlayMode:(finishedCompletionHandler)completion {
   NSMutableArray *pageViewModels = [self.currentMainViewModel.pageViewModels mutableCopy];
   [self createReferenceTreeWithPageViewModels:pageViewModels
-                                   complition:^(BOOL finished) {
-                                     if (finished && complition) {
-                                       complition(YES);
+                                   completion:^(BOOL finished) {
+                                     if (finished && completion) {
+                                       completion(YES);
                                      }
   }];
 }
@@ -247,6 +249,7 @@ DEFINE_SINGLETON_FOR_CLASS(DPMainManager)
     _leftVCCellHeight = SCREEN_HEIGHT / 10.f;
     _photoCellSize = [DPImageUtils createPhotoSizeWithRowNumber:3];
     _dataManager = [[DPDataManager alloc] init];
+    _networkService = [[DPNetworkService alloc] init];
     _doingAnimation = NO;
     // TODO: config hud when first use
     [SVProgressHUD setMinimumDismissTimeInterval:1.f];
@@ -324,7 +327,7 @@ DEFINE_SINGLETON_FOR_CLASS(DPMainManager)
 
 - (void)imageWithProjectTitle:(NSString *)title
                     imageName:(NSString *)imageName
-                   complition:(void (^)(UIImage *image))complition {
+                   completion:(void (^)(UIImage *image))completion {
   dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
     UIImage *image = [self.imageCache objectForKey:imageName];
     if (!image) {
@@ -337,8 +340,8 @@ DEFINE_SINGLETON_FOR_CLASS(DPMainManager)
         DLog(@"imageWithProjectTitle image is nil");
       }
     }
-    if (complition) {
-      complition(image);
+    if (completion) {
+      completion(image);
     }
   });
 }
@@ -412,8 +415,8 @@ DEFINE_SINGLETON_FOR_CLASS(DPMainManager)
 }
 
 
-- (void)restoreMainViewModels:(finishedComplitionHandler)complition {
-  if (complition) {
+- (void)restoreMainViewModels:(finishedCompletionHandler)completion {
+  if (completion) {
     __weak typeof(self) weakSelf = self;
     [self.dataManager selectMainViewModels:^(NSMutableArray *mutableArrayResult) {
       __strong typeof(self) strongSelf = weakSelf;
@@ -423,7 +426,7 @@ DEFINE_SINGLETON_FOR_CLASS(DPMainManager)
           [strongSelf.mainViewModels addObject:mainViewModel];
         }
       }
-      complition(YES);
+      completion(YES);
     }];
   }
 }
@@ -474,11 +477,11 @@ DEFINE_SINGLETON_FOR_CLASS(DPMainManager)
 }
 
 - (void)restorePageViewModelsWithMainViewModelID:(NSString *)mainViewModelID
-                                      complition:(finishedComplitionHandler)complition {
-  if (complition) {
+                                      completion:(finishedCompletionHandler)completion {
+  if (completion) {
     __weak typeof(self) weakSelf = self;
     [self.dataManager selectPageViewModelsWithMainViewModelID:mainViewModelID
-                                                   complition:^(NSMutableArray *mutableArrayResult) {
+                                                   completion:^(NSMutableArray *mutableArrayResult) {
                                                      __strong typeof(self) strongSelf = weakSelf;
                                                      for (NSDictionary *rawPageViewModelDictionary in mutableArrayResult) {
                                                        DPPageViewModel *pageViewModel = [[DPPageViewModel alloc] initWithSeparatedDictionary:rawPageViewModelDictionary];
@@ -486,7 +489,7 @@ DEFINE_SINGLETON_FOR_CLASS(DPMainManager)
                                                          [strongSelf.currentMainViewModel.pageViewModels addObject:pageViewModel];
                                                        }
                                                      }
-                                                     complition(YES);
+                                                     completion(YES);
                                                    }];
   }
 }
@@ -528,11 +531,11 @@ DEFINE_SINGLETON_FOR_CLASS(DPMainManager)
 }
 
 - (void)restoreMaskViewModelsWithPageViewModelID:(NSString *)pageViewModelID
-                                      complition:(finishedComplitionHandler)complition {
-  if (complition) {
+                                      completion:(finishedCompletionHandler)completion {
+  if (completion) {
     __weak typeof(self) weakSelf = self;
     [self.dataManager selectMaskViewModelsWithPageViewModelID:pageViewModelID
-                                                   complition:^(NSMutableArray *mutableArrayResult) {
+                                                   completion:^(NSMutableArray *mutableArrayResult) {
                                                      __strong typeof(self) strongSelf = weakSelf;
                                                      for (NSDictionary *rawPageViewModelDictionary in mutableArrayResult) {
                                                        DPMaskViewModel *maskViewModel = [[DPMaskViewModel alloc] initWithSeparatedDictionary:rawPageViewModelDictionary];
@@ -540,13 +543,13 @@ DEFINE_SINGLETON_FOR_CLASS(DPMainManager)
                                                          [strongSelf.currentPageViewModel.maskViewModels addObject:maskViewModel];
                                                        }
                                                      }
-                                                     complition(YES);
+                                                     completion(YES);
                                                    }];
   }
 }
 
 - (void)createJSONDataWithMainViewModel:(DPMainViewModel *)mainViewModel
-                             complition:(finishedComplitionHandler)complition {
+                             completion:(finishedCompletionHandler)completion {
   NSMutableArray *pageViewModelsArray = [[NSMutableArray alloc] init];
   [mainViewModel.pageViewModels
    enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -626,8 +629,8 @@ DEFINE_SINGLETON_FOR_CLASS(DPMainManager)
                                                         withCharcter:@".dparchive"];
       [DPFileManager renameFile:zipArchivePath
                            with:renamedZipFilePath];
-      if (complition) {
-        complition(YES);
+      if (completion) {
+        completion(YES);
       }
     } else {
       DLog(@"zipArchive error");
@@ -641,20 +644,36 @@ DEFINE_SINGLETON_FOR_CLASS(DPMainManager)
 }
 
 - (void)createSharedArchive:(DPMainViewModel *)mainViewModel
-                 complition:(finishedComplitionHandler)complition {
+                 completion:(finishedCompletionHandler)completion {
   [self createReferenceTreeWithMainViewModel:mainViewModel
-                                  complition:^(BOOL finished) {
+                                  completion:^(BOOL finished) {
                                     if (finished) {
                                       dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
                                         [self createJSONDataWithMainViewModel:mainViewModel
-                                                                   complition:^(BOOL finished) {
-                                                                       if (finished && complition) {
-                                                                         complition(YES);
+                                                                   completion:^(BOOL finished) {
+                                                                       if (finished && completion) {
+                                                                         completion(YES);
                                                                        }
                                                                    }];
                                       });
                                     }
   }];
+}
+
+#pragma mark - Network
+- (void)requestAphorismsCompletion:(resultCompletionHandler)completion {
+  if (completion) {
+    [self.networkService requestAphorismsCompletion:completion];
+  }
+}
+
+- (void)loginWithUserName:(NSString *)name
+              andPassword:(NSString *)password
+               completion:(resultCompletionHandler)completion {
+  if ([name isValid] && [password isValid] && completion) {
+    [self.networkService loginWithUserModel:nil
+                                 completion:completion];
+  }
 }
 
 @end

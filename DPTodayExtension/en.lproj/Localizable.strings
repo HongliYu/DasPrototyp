@@ -1,9 +1,7 @@
 /* 
-  InfoPlist.strings
+  Localizable.strings
   DasPrototyp
 
   Created by HongliYu on 16/6/25.
   Copyright © 2016年 HongliYu. All rights reserved.
 */
-"CFBundleDisplayName" = "DP原型";
-"CFBundleName" = "DP原型";

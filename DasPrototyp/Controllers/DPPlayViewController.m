@@ -81,7 +81,7 @@
   if (startPageViewModel.imageName) {
     [[DPMainManager sharedDPMainManager] imageWithProjectTitle:[DPMainManager sharedDPMainManager].currentMainViewModel.title
                                                      imageName:startPageViewModel.imageName
-                                                    complition:^(UIImage *image) {
+                                                    completion:^(UIImage *image) {
                                                       dispatch_async(dispatch_get_main_queue(), ^{
                                                         self.currentImageView.image = image;
                                                       });
@@ -343,7 +343,7 @@
   self.playedPageViewModel = [DPMainManager sharedDPMainManager].currentMainViewModel.pageViewModels[linkIndex];
   [[DPMainManager sharedDPMainManager] imageWithProjectTitle:[DPMainManager sharedDPMainManager].currentMainViewModel.title
                                                    imageName:self.playedPageViewModel.imageName
-                                                  complition:^(UIImage *image) {
+                                                  completion:^(UIImage *image) {
                                                     dispatch_async(dispatch_get_main_queue(), ^{
                                                       nextImageView.image = image;
                                                     });
