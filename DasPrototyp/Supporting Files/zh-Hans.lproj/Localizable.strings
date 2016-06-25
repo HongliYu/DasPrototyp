@@ -78,3 +78,6 @@
 // Play Mode
 "Three fingers pressed once to return"="三指按下以后返回编辑页面";
 "Got it"="知道了";
+
+// Extension
+"loading..."="加载中...";

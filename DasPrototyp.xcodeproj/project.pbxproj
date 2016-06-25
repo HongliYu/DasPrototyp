@@ -59,7 +59,6 @@
 		F78E37761CDDF63F006394AB /* DPMainTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F78E37741CDDF63F006394AB /* DPMainTableViewCell.m */; };
 		F792B9401CF5B07600D6712E /* PSTAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = F792B93F1CF5B07600D6712E /* PSTAlertController.m */; };
 		F79344311D1E48350064CC58 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F79344331D1E48350064CC58 /* InfoPlist.strings */; };
-		F79344371D1E49510064CC58 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F79344391D1E49510064CC58 /* Localizable.strings */; };
 		F793443D1D1E49930064CC58 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F793443F1D1E49930064CC58 /* InfoPlist.strings */; };
 		F79A56E718CDA29700CBBC7C /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F79A56E618CDA29700CBBC7C /* AVFoundation.framework */; };
 		F79AB8BD1CD1E47C00A0DC55 /* DPMainManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F79AB8BC1CD1E47C00A0DC55 /* DPMainManager.m */; };
@@ -229,8 +228,6 @@
 		F792B93F1CF5B07600D6712E /* PSTAlertController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSTAlertController.m; sourceTree = "<group>"; };
 		F79344321D1E48350064CC58 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		F79344341D1E483B0064CC58 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		F79344381D1E49510064CC58 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		F793443A1D1E49530064CC58 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		F793443E1D1E49930064CC58 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F79344401D1E49940064CC58 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		F79A56E618CDA29700CBBC7C /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -558,7 +555,6 @@
 				F7AE0D8B1D1CAC0300CF83B4 /* DPAphorismsModel.h */,
 				F7AE0D8C1D1CAC0300CF83B4 /* DPAphorismsModel.m */,
 				F7C336081D1E45D700692149 /* Info.plist */,
-				F79344391D1E49510064CC58 /* Localizable.strings */,
 				F793443F1D1E49930064CC58 /* InfoPlist.strings */,
 			);
 			path = DPTodayExtension;
@@ -727,6 +723,7 @@
 				F7AE0D741D1BB87900CF83B4 /* Resources */,
 				53090D71DA2BDB4F82A83C0D /* 📦 Embed Pods Frameworks */,
 				B093F69F0B3FDDD1873C315F /* 📦 Copy Pods Resources */,
+				F78D4AB31D1F4CA10062D26E /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -816,7 +813,6 @@
 			files = (
 				F7C336011D1E3F2000692149 /* Localizable.strings in Resources */,
 				F793443D1D1E49930064CC58 /* InfoPlist.strings in Resources */,
-				F79344371D1E49510064CC58 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -952,6 +948,19 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DPTodayExtension/Pods-DPTodayExtension-resources.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		F78D4AB31D1F4CA10062D26E /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cd \"${CONFIGURATION_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/\"\nif [[ -d \"Frameworks\" ]]; then\nrm -fr Frameworks\nfi";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1118,15 +1127,6 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		F79344391D1E49510064CC58 /* Localizable.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F79344381D1E49510064CC58 /* en */,
-				F793443A1D1E49530064CC58 /* zh-Hans */,
-			);
-			name = Localizable.strings;
-			sourceTree = "<group>";
-		};
 		F793443F1D1E49930064CC58 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1153,7 +1153,7 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = DPTodayExtension/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.HongliYu.DasPrototyp.DPTodayExtension;
@@ -1178,7 +1178,7 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = DPTodayExtension/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.HongliYu.DasPrototyp.DPTodayExtension;
@@ -1272,6 +1272,7 @@
 				CODE_SIGN_ENTITLEMENTS = DasPrototyp/DasPrototyp.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = NO;
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1301,6 +1302,7 @@
 				CODE_SIGN_ENTITLEMENTS = DasPrototyp/DasPrototyp.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = NO;
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
