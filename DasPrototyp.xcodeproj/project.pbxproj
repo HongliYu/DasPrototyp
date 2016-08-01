@@ -717,12 +717,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F7AE0D861D1BB87900CF83B4 /* Build configuration list for PBXNativeTarget "DPTodayExtension" */;
 			buildPhases = (
-				52BC2BB7C639A79C584F60AC /* 📦 Check Pods Manifest.lock */,
+				52BC2BB7C639A79C584F60AC /* [CP] Check Pods Manifest.lock */,
 				F7AE0D721D1BB87900CF83B4 /* Sources */,
 				F7AE0D731D1BB87900CF83B4 /* Frameworks */,
 				F7AE0D741D1BB87900CF83B4 /* Resources */,
-				53090D71DA2BDB4F82A83C0D /* 📦 Embed Pods Frameworks */,
-				B093F69F0B3FDDD1873C315F /* 📦 Copy Pods Resources */,
+				53090D71DA2BDB4F82A83C0D /* [CP] Embed Pods Frameworks */,
+				B093F69F0B3FDDD1873C315F /* [CP] Copy Pods Resources */,
 				F78D4AB31D1F4CA10062D26E /* ShellScript */,
 			);
 			buildRules = (
@@ -738,14 +738,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F7B9422F18C9C64D009825D6 /* Build configuration list for PBXNativeTarget "DasPrototyp" */;
 			buildPhases = (
-				401DD6FCFDF8E7F35B7462A2 /* 📦 Check Pods Manifest.lock */,
+				401DD6FCFDF8E7F35B7462A2 /* [CP] Check Pods Manifest.lock */,
 				F7B941FF18C9C64D009825D6 /* Sources */,
 				F7B9420018C9C64D009825D6 /* Frameworks */,
 				F7B9420118C9C64D009825D6 /* Resources */,
 				F73EB0551A35FD15005CA6CC /* Embed App Extensions */,
 				82A9F2D21A7350E3001E236B /* Run Script */,
-				074D5CB6D9B81B9F1F3DAC87 /* 📦 Embed Pods Frameworks */,
-				708358183B41912F5F5C5AFD /* 📦 Copy Pods Resources */,
+				074D5CB6D9B81B9F1F3DAC87 /* [CP] Embed Pods Frameworks */,
+				708358183B41912F5F5C5AFD /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -845,14 +845,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		074D5CB6D9B81B9F1F3DAC87 /* 📦 Embed Pods Frameworks */ = {
+		074D5CB6D9B81B9F1F3DAC87 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -860,14 +860,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DasPrototyp/Pods-DasPrototyp-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		401DD6FCFDF8E7F35B7462A2 /* 📦 Check Pods Manifest.lock */ = {
+		401DD6FCFDF8E7F35B7462A2 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -875,14 +875,14 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		52BC2BB7C639A79C584F60AC /* 📦 Check Pods Manifest.lock */ = {
+		52BC2BB7C639A79C584F60AC /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -890,14 +890,14 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		53090D71DA2BDB4F82A83C0D /* 📦 Embed Pods Frameworks */ = {
+		53090D71DA2BDB4F82A83C0D /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -905,14 +905,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DPTodayExtension/Pods-DPTodayExtension-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		708358183B41912F5F5C5AFD /* 📦 Copy Pods Resources */ = {
+		708358183B41912F5F5C5AFD /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -934,14 +934,14 @@
 			shellPath = /bin/sh;
 			shellScript = "./Fabric.framework/run ab19721fa70a9eb66ab51ca19ffec9c2f56fde52 006a95af9f8189a54eb229abfdfd897f14d02af6720b357ca3e72618e092b1d8";
 		};
-		B093F69F0B3FDDD1873C315F /* 📦 Copy Pods Resources */ = {
+		B093F69F0B3FDDD1873C315F /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1270,8 +1270,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = DasPrototyp/DasPrototyp.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Hongli Yu (96A6PSQDK2)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Hongli Yu (96A6PSQDK2)";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = NO;
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1288,7 +1288,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.HongliYu.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = DasPrototyp;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "9c84b2e9-c438-443a-9216-18cffb51b64b";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1300,8 +1300,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = DasPrototyp/DasPrototyp.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Hongli Yu (FC9QT6TC28)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Hongli Yu (FC9QT6TC28)";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = NO;
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1314,7 +1314,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.HongliYu.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = DasPrototyp;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "fe481205-ec27-42d1-a76b-070e26fec04b";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
