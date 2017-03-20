@@ -11,8 +11,9 @@
 @interface DPAphorismsModel : NSObject
 
 @property (nonatomic, strong, readonly) NSNumber *identifier;
+@property (nonatomic, copy, readonly) NSString *title;
 @property (nonatomic, copy, readonly) NSString *content;
-@property (nonatomic, copy, readonly) NSString *mrname;
+@property (nonatomic, copy, readonly) NSString *link;
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary;
 

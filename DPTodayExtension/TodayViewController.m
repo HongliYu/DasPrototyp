@@ -26,13 +26,18 @@
 
 @implementation TodayViewController
 
+//- (void)loadView {
+//  self.view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 400)];
+//}
+
 - (void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
-  [self loadBaseData];
+  [self refreshRequest];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
   [super viewDidAppear:animated];
+  
 }
 
 - (void)viewDidLoad {
@@ -41,8 +46,10 @@
 }
 
 - (void)configBaseUI {
-  self.preferredContentSize = CGSizeZero;
+
+  self.preferredContentSize = CGSizeMake(0, 0);
   [self.view setTranslatesAutoresizingMaskIntoConstraints:NO];
+  
   self.contentLabel = [[UILabel alloc] init];
   self.contentLabel.numberOfLines = 0;
   [self.contentLabel setFont:[UIFont systemFontOfSize:16.f]];
@@ -55,40 +62,39 @@
   [self.loadingView setFont:[UIFont systemFontOfSize:18.f]];
   [self.loadingView setTextColor:[UIColor lightTextColor]];
   [self.loadingView setTranslatesAutoresizingMaskIntoConstraints:NO];
-  [self.view addSubview:self.loadingView];
   [self.loadingView setHidden:NO];
-
+  [self.view addSubview:self.loadingView];
+  
   [self.view mas_updateConstraints:^(MASConstraintMaker *make) {
-    make.height.equalTo(@20.f);
+    make.height.equalTo(@20);
   }];
+
   [self.loadingView mas_makeConstraints:^(MASConstraintMaker *make) {
     make.left.equalTo(@0);
     make.top.equalTo(@0);
     make.width.equalTo(@(SCREEN_WIDTH));
-    make.height.equalTo(@20.f);
+    make.height.equalTo(@0);
   }];
+  
+  NSString *version = [UIDevice currentDevice].systemVersion;
+  if (version.doubleValue >= 10.0) {
+    self.extensionContext.widgetLargestAvailableDisplayMode = NCWidgetDisplayModeExpanded;
+  }
   
 }
 
-- (void)loadBaseData {
+- (void)refreshRequest {
   DPNetworkService *networkService = [[DPNetworkService alloc] init];
   [networkService requestAphorismsCompletion:^(id result, NSError *error) {
     // parse data
-    if ([result isKindOfClass:[NSDictionary class]]) {
-      NSDictionary *retDictionary = (NSDictionary *)result;
-      NSNumber *code = [retDictionary objectForKey:@"code"];
-      NSString *msg = [retDictionary objectForKey:@"msg"];
-      if ([code integerValue] == 200 && [msg isEqualToString:@"success"]) {
-        NSObject *retArrayObject = [retDictionary objectForKey:@"newslist"];
-        if ([retArrayObject isKindOfClass:[NSArray class]]) {
-          NSArray *newslistArray = (NSArray *)retArrayObject;
-          NSObject *newslistFirstItem = [newslistArray firstObject];
-          if ([newslistFirstItem isKindOfClass:[NSDictionary class]]) {
-            NSDictionary *newslistDictionary = (NSDictionary *)newslistFirstItem;
-            DPAphorismsModel *aphorismsModel = [[DPAphorismsModel alloc] initWithDictionary:newslistDictionary];
-            // update UI
-            [self updateUIWithData:aphorismsModel];
-          }
+    if ([result isKindOfClass:[NSArray class]]) {
+      NSArray *retArray = (NSArray *)result;
+      if (retArray.firstObject != nil) {
+        if ([retArray.firstObject isKindOfClass:[NSDictionary class]]) {
+          NSDictionary *retDictionary = (NSDictionary* )retArray.firstObject;
+          DPAphorismsModel *aphorismsModel = [[DPAphorismsModel alloc] initWithDictionary:retDictionary];
+          // update UI
+          [self updateUIWithData:aphorismsModel];
         }
       }
     }
@@ -97,27 +103,41 @@
 }
 
 - (void)updateUIWithData:(DPAphorismsModel *)aphorismsModel {
-  self.contentLabel.text = [NSString stringWithFormat:@"“%@” <<< %@ ",
-                            aphorismsModel.content, aphorismsModel.mrname];
+  NSString *filteredContent =  [self removeHTML: aphorismsModel.content];
+  self.contentLabel.text = [NSString stringWithFormat:@"%@ <<< %@ ", filteredContent, aphorismsModel.title];
   CGSize contentSize = [DPCommonUtils rectSizeWithText:self.contentLabel.text
                                            andFontSize:18.f];
   [self.view mas_updateConstraints:^(MASConstraintMaker *make) {
-    make.height.equalTo(@(contentSize.height + 4.f));
+    make.height.equalTo(@(contentSize.height));
   }];
   [self.contentLabel mas_updateConstraints:^(MASConstraintMaker *make) {
-    make.left.equalTo(@0);
+    make.left.equalTo(@18);
     make.top.equalTo(@0);
-    make.width.equalTo(@(SCREEN_WIDTH));
+    make.width.equalTo(@(SCREEN_WIDTH - 18 * 2));
     make.height.equalTo(@(contentSize.height));
   }];
 }
 
-- (void)viewWillTransitionToSize:(CGSize)size
-       withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
+- (void)widgetActiveDisplayModeDidChange:(NCWidgetDisplayMode)activeDisplayMode withMaximumSize:(CGSize)maxSize {
+  if (activeDisplayMode == NCWidgetDisplayModeCompact) {
+    self.preferredContentSize = maxSize;
+  } else {
+    self.preferredContentSize = CGSizeMake(0, 200);
+  }
+}
+
+- (NSString *)removeHTML:(NSString *)html {
+  NSArray *components = [html componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]];
+  NSMutableArray *componentsToKeep = [NSMutableArray array];
+  for (int i = 0; i < [components count]; i = i + 2) {
+    [componentsToKeep addObject:[components objectAtIndex:i]];
+  }
+  NSString *plainText = [componentsToKeep componentsJoinedByString:@""];
+  return plainText;
 }
 
 - (UIEdgeInsets)widgetMarginInsetsForProposedMarginInsets:(UIEdgeInsets)defaultMarginInsets {
-  return UIEdgeInsetsMake(0, 0, 0, 0);
+  return UIEdgeInsetsZero;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -126,7 +146,7 @@
 
 - (void)widgetPerformUpdateWithCompletionHandler:(void (^)(NCUpdateResult))completionHandler {
   // Perform any setup necessary in order to update the view.
-    
+  
   // If an error is encountered, use NCUpdateResultFailed
   // If there's no update required, use NCUpdateResultNoData
   // If there's an update, use NCUpdateResultNewData

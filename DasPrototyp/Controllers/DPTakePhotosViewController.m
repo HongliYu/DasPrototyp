@@ -76,7 +76,7 @@ static void *SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevice
       dispatch_async(dispatch_get_main_queue(), ^{
         [[(AVCaptureVideoPreviewLayer *)[[self previewView] layer] connection]
          setVideoOrientation:(AVCaptureVideoOrientation)
-         [self interfaceOrientation]];
+         [[UIApplication sharedApplication] statusBarOrientation]];
       });
     }
     

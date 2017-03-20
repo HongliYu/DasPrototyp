@@ -32,7 +32,7 @@ static float kUITextViewPadding = 8.0;
 {
     // the label which displays the placeholder
     // needs to inherit some properties from its parent text view
-
+    [super awakeFromNib];
     // account for standard UITextViewPadding
     CGRect frame = CGRectMake(kUITextViewPadding, kUITextViewPadding, 0, 0);
     self._placeholderLabel = [[UILabel alloc] initWithFrame:frame];

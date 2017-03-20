@@ -70,11 +70,11 @@ typedef NS_ENUM(NSUInteger, DPRequestErrorCode) {
 }
 
 - (void)requestAphorismsCompletion:(resultCompletionHandler)completion {
-  NSURL *aphorismsURL = [NSURL URLWithString:@"http://apis.baidu.com/txapi/dictum/"];
+  NSURL *aphorismsURL = [NSURL URLWithString:@"http://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1"];
   AFHTTPSessionManager *sessionManager = [[AFHTTPSessionManager alloc] initWithBaseURL:aphorismsURL];
-  [sessionManager.requestSerializer setValue:@"d8b8eb914ce39d30e3f7f9629a7b3c56"
-                          forHTTPHeaderField:@"apikey"];
-  [sessionManager GET:@"dictum/"
+//  [sessionManager.requestSerializer setValue:@"d8b8eb914ce39d30e3f7f9629a7b3c56"
+//                          forHTTPHeaderField:@"apikey"];
+  [sessionManager GET:@""
            parameters:nil
              progress:^(NSProgress * _Nonnull uploadProgress) {
                ;
