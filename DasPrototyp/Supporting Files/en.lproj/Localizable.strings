@@ -1,5 +1,87 @@
 /* Localized versions of Info.plist keys */
+
+// Left TableView
+"DasPrototyp"="DasPrototyp";
 "Projects"="Projects";
 "Support"="Support";
 "Rate This App"="Rate This App";
 "Donate"="Donate";
+
+// Center TableView
+"Rename"="Rename";
+"Share"="Share";
+"Delete"="Delete";
+"Describe the project"="Describe the project";
+"New Project"="New Project";
+"Enter Project name"="Enter Project name";
+"Rename Project"="Rename Project";
+"New Name"="New Name";
+"Name"="Name";
+"Project Name"="Project Name";
+"No wifi connection"="No wifi connection";
+"It may take you a lot of time sending an email with a big attachment"="It may take you a lot of time sending an email with a big attachment";
+"I changed my mind"="I changed my mind";
+"I insist"="I insist";
+"No content"="No content";
+"Mail saved"="Mail saved";
+"Mail failed"="Mail failed";
+"Mail sent"="Mail sent";
+"Pull to refresh..."="Pull to refresh...";
+"Release to refresh..."="Release to refresh...";
+"Loading..."="Loading...";
+
+// Project Detail
+"Back"="Back";
+"Edit"="Edit";
+"Done"="Done";
+"OK"="OK";
+"Cancel"="Cancel";
+"Tips"="Tips";
+"Replace"="Replace";
+"Take Photo"="Take Photo";
+"Album"="Album";
+"Success"="Success";
+"Error"="Error";
+"Message"="Message";
+"Note"="Note";
+
+// Link
+"LinkTo"="LinkTo";
+"push"="push";
+"cover"="cover";
+"uncover"="uncover";
+"none"="none";
+"up"="up";
+"down"="down";
+"left"="left";
+"right"="right";
+"Enter Delay time"="Enter Delay time";
+"Please input a float between 0 and 5"="Please input a float between 0 and 5";
+"Input"="Input";
+"Delay Time"="Delay Time";
+"delay"="delay";
+
+// Page Detail
+"Hold On..."="Hold On...";
+"Select a hotspot please"="Select a hotspot please";
+"Add a hotspot please"="Add a hotspot please";
+"Gesture"="Gesture";
+"PressDown"="PressDown";
+"LongPress"="LongPress";
+"SwipeLeft"="SwipeLeft";
+"SwipeUp"="SwipeUp";
+"SwipeRight"="SwipeRight";
+"SwipeDown"="SwipeDown";
+"Rotate"="Rotate";
+"Pinch"="Pinch";
+
+// Play Mode
+"Three fingers pressed once to return"="Three fingers pressed once to return";
+"Got it"="Got it";
+
+// Extension
+"loading..."="loading...";
+
+// Access Permission
+"Need to access camera" = "Need to access camera";
+"Need to access photo library" = "Need to access photo library";

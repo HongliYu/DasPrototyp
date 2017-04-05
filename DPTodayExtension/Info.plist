@@ -21,12 +21,14 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>0</string>
+	<string>3</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>Need to access camera</string>
 	<key>NSExtension</key>
 	<dict>
 		<key>NSExtensionPointIdentifier</key>
@@ -34,5 +36,7 @@
 		<key>NSExtensionPrincipalClass</key>
 		<string>TodayViewController</string>
 	</dict>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Need to access photo library</string>
 </dict>
 </plist>

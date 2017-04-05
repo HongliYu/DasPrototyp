@@ -81,3 +81,7 @@
 
 // Extension
 "loading..."="加载中...";
+
+// Access Permission
+"Need to access camera" = "需要访问相机";
+"Need to access photo library" = "需要访问相册";

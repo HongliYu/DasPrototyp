@@ -36,7 +36,7 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>0</string>
+	<string>3</string>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
@@ -61,9 +61,9 @@
 		<true/>
 	</dict>
 	<key>NSCameraUsageDescription</key>
-	<string></string>
+	<string>Need to access camera</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string></string>
+	<string>Need to access photo library</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>dp_iconfont.ttf</string>
