@@ -26,7 +26,7 @@ PODS:
   - FMDB (2.6.2):
     - FMDB/standard (= 2.6.2)
   - FMDB/standard (2.6.2)
-  - HMSegmentedControl (1.5.2)
+  - HMSegmentedControl (1.5.3)
   - Masonry (1.0.0)
   - SCLAlertView-Objective-C (1.0.2)
   - SSZipArchive (1.2)
@@ -38,7 +38,7 @@ DEPENDENCIES:
   - ASValueTrackingSlider (~> 0.11.2)
   - CocoaLumberjack (~> 2.2.0)
   - FMDB (~> 2.5)
-  - HMSegmentedControl (~> 1.5.2)
+  - HMSegmentedControl (~> 1.5.3)
   - Masonry (~> 1.0.0)
   - SCLAlertView-Objective-C (= 1.0.2)
   - SSZipArchive (~> 1.2.0)
@@ -50,13 +50,13 @@ SPEC CHECKSUMS:
   ASValueTrackingSlider: 45c9f78252da60de01d8f2afe869aaf90dd978d9
   CocoaLumberjack: 17fe8581f84914d5d7e6360f7c70022b173c3ae0
   FMDB: 854a0341b4726e53276f2a8996f06f1b80f9259a
-  HMSegmentedControl: 83b9686022d2176fb6457d2bdb61e5d6393fed7d
+  HMSegmentedControl: 7c6145afb50f26cec5f3243082f6f12b9f41318f
   Masonry: b529bb169217897b6354d4b56b1fada6d475b13d
   SCLAlertView-Objective-C: 25f7ea3a3526dde177d8b8056a0b88fe4187651e
   SSZipArchive: 251093c65f98d6ea282c50bc404bfa631d9fd721
   SVProgressHUD: b0830714205bea1317ea1a2ebc71e5633af334d4
   SVPullToRefresh: ba2e718695a43253d8bea6852d2960097dc15d8c
 
-PODFILE CHECKSUM: 3a3515e0dba9e483f94bed8d5095e45b99ab7e2e
+PODFILE CHECKSUM: 2a3b9d3c524358278f670f193243bd303840e54d
 
-COCOAPODS: 1.0.1
+COCOAPODS: 1.2.0

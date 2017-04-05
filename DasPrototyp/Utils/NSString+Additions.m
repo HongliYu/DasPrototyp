@@ -195,5 +195,5 @@
   }
   return [hash lowercaseString];
 }
-
+// HTML
 @end

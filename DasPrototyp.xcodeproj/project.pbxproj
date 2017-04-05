@@ -101,6 +101,11 @@
 		F7E927181A2390A30063B87D /* DPTakePhotosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E927061A2390A30063B87D /* DPTakePhotosViewController.m */; };
 		F7E927191A2390A30063B87D /* DPTakePhotosViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7E927071A2390A30063B87D /* DPTakePhotosViewController.xib */; };
 		F7E927251A2390AA0063B87D /* AVCamPreviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E9271C1A2390AA0063B87D /* AVCamPreviewView.m */; };
+		F7F21A461E95079B004824A4 /* NSString+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = F7F21A441E95079B004824A4 /* NSString+HTML.m */; };
+		F7F21A491E950823004824A4 /* GTMNSString+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = F7F21A471E950823004824A4 /* GTMNSString+HTML.m */; };
+		F7F21A4A1E9509B8004824A4 /* NSString+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = F79AB8C51CD205B800A0DC55 /* NSString+Additions.m */; };
+		F7F21A4B1E9509B8004824A4 /* NSString+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = F7F21A441E95079B004824A4 /* NSString+HTML.m */; };
+		F7F21A4C1E9509B8004824A4 /* GTMNSString+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = F7F21A471E950823004824A4 /* GTMNSString+HTML.m */; };
 		F7F6AB551CE398E8009989D1 /* DPMainModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F7F6AB491CE398E8009989D1 /* DPMainModel.m */; };
 		F7F6AB561CE398E8009989D1 /* DPMaskModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F7F6AB4B1CE398E8009989D1 /* DPMaskModel.m */; };
 		F7F6AB571CE398E8009989D1 /* DPPageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F7F6AB4D1CE398E8009989D1 /* DPPageModel.m */; };
@@ -294,6 +299,10 @@
 		F7E927071A2390A30063B87D /* DPTakePhotosViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DPTakePhotosViewController.xib; sourceTree = "<group>"; };
 		F7E9271B1A2390AA0063B87D /* AVCamPreviewView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVCamPreviewView.h; sourceTree = "<group>"; };
 		F7E9271C1A2390AA0063B87D /* AVCamPreviewView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVCamPreviewView.m; sourceTree = "<group>"; };
+		F7F21A441E95079B004824A4 /* NSString+HTML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+HTML.m"; sourceTree = "<group>"; };
+		F7F21A451E95079B004824A4 /* NSString+HTML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+HTML.h"; sourceTree = "<group>"; };
+		F7F21A471E950823004824A4 /* GTMNSString+HTML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GTMNSString+HTML.m"; sourceTree = "<group>"; };
+		F7F21A481E950823004824A4 /* GTMNSString+HTML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GTMNSString+HTML.h"; sourceTree = "<group>"; };
 		F7F6AB481CE398E8009989D1 /* DPMainModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPMainModel.h; sourceTree = "<group>"; };
 		F7F6AB491CE398E8009989D1 /* DPMainModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPMainModel.m; sourceTree = "<group>"; };
 		F7F6AB4A1CE398E8009989D1 /* DPMaskModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPMaskModel.h; sourceTree = "<group>"; };
@@ -487,6 +496,10 @@
 				F760ACD81A23769300E4961C /* DPImageUtils.m */,
 				F79AB8C41CD205B800A0DC55 /* NSString+Additions.h */,
 				F79AB8C51CD205B800A0DC55 /* NSString+Additions.m */,
+				F7F21A451E95079B004824A4 /* NSString+HTML.h */,
+				F7F21A441E95079B004824A4 /* NSString+HTML.m */,
+				F7F21A481E950823004824A4 /* GTMNSString+HTML.h */,
+				F7F21A471E950823004824A4 /* GTMNSString+HTML.m */,
 				F78E376A1CDDD82A006394AB /* NSDate+Additions.h */,
 				F78E376B1CDDD82A006394AB /* NSDate+Additions.m */,
 				F760ACDB1A23769300E4961C /* StyleUtils */,
@@ -721,7 +734,6 @@
 				F7AE0D721D1BB87900CF83B4 /* Sources */,
 				F7AE0D731D1BB87900CF83B4 /* Frameworks */,
 				F7AE0D741D1BB87900CF83B4 /* Resources */,
-				53090D71DA2BDB4F82A83C0D /* [CP] Embed Pods Frameworks */,
 				B093F69F0B3FDDD1873C315F /* [CP] Copy Pods Resources */,
 				F78D4AB31D1F4CA10062D26E /* ShellScript */,
 			);
@@ -872,7 +884,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		52BC2BB7C639A79C584F60AC /* [CP] Check Pods Manifest.lock */ = {
@@ -887,22 +899,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		53090D71DA2BDB4F82A83C0D /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DPTodayExtension/Pods-DPTodayExtension-frameworks.sh\"\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		708358183B41912F5F5C5AFD /* [CP] Copy Pods Resources */ = {
@@ -969,6 +966,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F7F21A4A1E9509B8004824A4 /* NSString+Additions.m in Sources */,
+				F7F21A4B1E9509B8004824A4 /* NSString+HTML.m in Sources */,
+				F7F21A4C1E9509B8004824A4 /* GTMNSString+HTML.m in Sources */,
 				F77EC86E1D1CD3ED005765D6 /* GDUIViewStyleMaker.m in Sources */,
 				F77EC86C1D1CD1FF005765D6 /* DPCommonUtils.m in Sources */,
 				F77EC86D1D1CD268005765D6 /* UIViewAdditions.m in Sources */,
@@ -991,6 +991,7 @@
 				F7889E5C1CD8E4DA00E68450 /* DPDBRoot.m in Sources */,
 				F7C684321D086CAC000760AD /* DPPhotoDetailsBusiness.m in Sources */,
 				F764A9461CD62C5D00876D15 /* DPDataManager.m in Sources */,
+				F7F21A461E95079B004824A4 /* NSString+HTML.m in Sources */,
 				F7E927161A2390A30063B87D /* DPPlayViewController.m in Sources */,
 				F7C6842F1D086C8E000760AD /* DPPhotoCollectBusiness.m in Sources */,
 				F79AB8C91CD2062600A0DC55 /* DPFileManager.m in Sources */,
@@ -999,6 +1000,7 @@
 				F79CD20E1D06F7F500C84D36 /* DPPhoneDetailsView.m in Sources */,
 				F707A0BE1D00538700261E44 /* DPDrawerViewController.m in Sources */,
 				F707A0C41D00727900261E44 /* UIViewController+Additions.m in Sources */,
+				F7F21A491E950823004824A4 /* GTMNSString+HTML.m in Sources */,
 				F7E927081A2390A30063B87D /* DPCommentViewController.m in Sources */,
 				F7F6AB551CE398E8009989D1 /* DPMainModel.m in Sources */,
 				F73F2C271A237CD00085B9B7 /* DPAppDelegate.m in Sources */,

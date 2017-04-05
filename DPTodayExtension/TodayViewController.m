@@ -16,6 +16,7 @@
 #import "UIViewAdditions.h"
 #import "DPMainMacro.h"
 #import "Masonry.h"
+#import "NSString+HTML.h"
 
 @interface TodayViewController () <NCWidgetProviding>
 
@@ -25,10 +26,6 @@
 @end
 
 @implementation TodayViewController
-
-//- (void)loadView {
-//  self.view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 400)];
-//}
 
 - (void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
@@ -79,6 +76,8 @@
   NSString *version = [UIDevice currentDevice].systemVersion;
   if (version.doubleValue >= 10.0) {
     self.extensionContext.widgetLargestAvailableDisplayMode = NCWidgetDisplayModeExpanded;
+    [self.contentLabel setTextColor:[UIColor darkTextColor]];
+    [self.loadingView setTextColor:[UIColor darkTextColor]];
   }
   
 }
@@ -104,7 +103,9 @@
 
 - (void)updateUIWithData:(DPAphorismsModel *)aphorismsModel {
   NSString *filteredContent =  [self removeHTML: aphorismsModel.content];
-  self.contentLabel.text = [NSString stringWithFormat:@"%@ <<< %@ ", filteredContent, aphorismsModel.title];
+  self.contentLabel.text = [NSString stringWithFormat:@"%@ <<< %@ ",
+                            filteredContent.stringByDecodingHTMLEntities,
+                            aphorismsModel.title];
   CGSize contentSize = [DPCommonUtils rectSizeWithText:self.contentLabel.text
                                            andFontSize:18.f];
   [self.view mas_updateConstraints:^(MASConstraintMaker *make) {

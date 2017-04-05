@@ -20,7 +20,7 @@ def main_pods
 	pod 'SCLAlertView-Objective-C','1.0.2'
 	pod 'SVProgressHUD','~> 2.0.3'
 	pod 'SVPullToRefresh','~>0.4.1'
-	pod 'HMSegmentedControl','~> 1.5.2'
+	pod 'HMSegmentedControl','~> 1.5.3'
 	pod 'ASValueTrackingSlider','~>0.11.2'
 end
 
