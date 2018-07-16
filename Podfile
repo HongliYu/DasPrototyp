@@ -14,7 +14,7 @@ def main_pods
 	pod 'CocoaLumberjack','3.4.2'
 
 	# hanlde .zip files
-	pod 'SSZipArchive','2.1.1'
+	pod 'SSZipArchive','2.1.3'
 
 	# interactive components
 	pod 'SCLAlertView-Objective-C','1.1.5'

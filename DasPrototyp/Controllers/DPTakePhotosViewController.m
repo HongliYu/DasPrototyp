@@ -70,8 +70,8 @@ static void *SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevice
       DLog(@"AVCaptureDeviceInput error: %@", error);
     }
     
-    if ([_session canAddInput:videoDeviceInput]) {
-      [_session addInput:videoDeviceInput];
+    if ([self.session canAddInput:videoDeviceInput]) {
+      [self.session addInput:videoDeviceInput];
       [self setVideoDeviceInput:videoDeviceInput];
       dispatch_async(dispatch_get_main_queue(), ^{
         [[(AVCaptureVideoPreviewLayer *)[[self previewView] layer] connection]
@@ -81,9 +81,9 @@ static void *SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevice
     }
     
     AVCaptureStillImageOutput *stillImageOutput = [[AVCaptureStillImageOutput alloc] init];
-    if ([_session canAddOutput:stillImageOutput]) {
+    if ([self.session canAddOutput:stillImageOutput]) {
       [stillImageOutput setOutputSettings:@{AVVideoCodecKey : AVVideoCodecJPEG}];
-      [_session addOutput:stillImageOutput];
+      [self.session addOutput:stillImageOutput];
       [self setStillImageOutput:stillImageOutput];
     }
   });
