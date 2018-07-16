@@ -174,8 +174,8 @@
   NSString *recipients = @"mailto:first@example.com&subject=my email!";
   NSString *body = @"&body=email body!";
   NSString *email = [NSString stringWithFormat:@"%@%@", recipients, body];
-  email = [email stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-  [[UIApplication sharedApplication] openURL:[NSURL URLWithString:email]];
+  email = [email stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]];
+  [[UIApplication sharedApplication] openURL:[NSURL URLWithString:email] options:@{} completionHandler:nil];
 }
 
 - (void)sendEmail:(DPMainViewModel *)mainViewModel {

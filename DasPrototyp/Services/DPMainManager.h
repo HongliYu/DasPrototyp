@@ -31,7 +31,7 @@ DEFINE_SINGLETON_FOR_HEADER(DPMainManager)
 - (void)checkNewProjectWithDirectory:(NSString *)directory;
 - (void)createSharedArchive:(DPMainViewModel *)mainViewModel
                  completion:(finishedCompletionHandler)completion;
-@property (nonatomic, copy) void(^addProjectFromMailCallBack)();
+@property (nonatomic, copy) void(^addProjectFromMailCallBack)(void);
 
 // play mode
 - (void)enterPlayMode:(finishedCompletionHandler)completion;
@@ -63,7 +63,7 @@ DEFINE_SINGLETON_FOR_HEADER(DPMainManager)
 @property (nonatomic, strong, readonly) DPMaskViewModel *currentMaskViewModel;
 @property (nonatomic, assign, readonly) NSInteger selecedIndexInEditMode; // TODO: encapsulate to business
 @property (nonatomic, strong, readonly) DPPageViewModel *selectedPageViewModelInEditMode;
-@property (nonatomic, copy) void (^takePhotoActionCallBack)();
+@property (nonatomic, copy) void (^takePhotoActionCallBack)(void);
 
 - (void)setCurrentMainViewModel:(DPMainViewModel *)currentMainViewModel;
 - (void)setCurrentPageViewModel:(DPPageViewModel *)currentPageViewModel;

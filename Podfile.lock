@@ -1,62 +1,73 @@
 PODS:
-  - AFNetworking (3.1.0):
-    - AFNetworking/NSURLSession (= 3.1.0)
-    - AFNetworking/Reachability (= 3.1.0)
-    - AFNetworking/Security (= 3.1.0)
-    - AFNetworking/Serialization (= 3.1.0)
-    - AFNetworking/UIKit (= 3.1.0)
-  - AFNetworking/NSURLSession (3.1.0):
+  - AFNetworking (3.2.0):
+    - AFNetworking/NSURLSession (= 3.2.0)
+    - AFNetworking/Reachability (= 3.2.0)
+    - AFNetworking/Security (= 3.2.0)
+    - AFNetworking/Serialization (= 3.2.0)
+    - AFNetworking/UIKit (= 3.2.0)
+  - AFNetworking/NSURLSession (3.2.0):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/Reachability (3.1.0)
-  - AFNetworking/Security (3.1.0)
-  - AFNetworking/Serialization (3.1.0)
-  - AFNetworking/UIKit (3.1.0):
+  - AFNetworking/Reachability (3.2.0)
+  - AFNetworking/Security (3.2.0)
+  - AFNetworking/Serialization (3.2.0)
+  - AFNetworking/UIKit (3.2.0):
     - AFNetworking/NSURLSession
-  - ASValueTrackingSlider (0.11.2)
-  - CocoaLumberjack (2.2.0):
-    - CocoaLumberjack/Default (= 2.2.0)
-    - CocoaLumberjack/Extensions (= 2.2.0)
-  - CocoaLumberjack/Core (2.2.0)
-  - CocoaLumberjack/Default (2.2.0):
-    - CocoaLumberjack/Core
-  - CocoaLumberjack/Extensions (2.2.0):
+  - ASValueTrackingSlider (0.12.1)
+  - CocoaLumberjack (3.4.2):
+    - CocoaLumberjack/Default (= 3.4.2)
+    - CocoaLumberjack/Extensions (= 3.4.2)
+  - CocoaLumberjack/Default (3.4.2)
+  - CocoaLumberjack/Extensions (3.4.2):
     - CocoaLumberjack/Default
-  - FMDB (2.6.2):
-    - FMDB/standard (= 2.6.2)
-  - FMDB/standard (2.6.2)
-  - HMSegmentedControl (1.5.3)
-  - Masonry (1.0.0)
-  - SCLAlertView-Objective-C (1.0.2)
-  - SSZipArchive (1.2)
-  - SVProgressHUD (2.0.3)
+  - FMDB (2.7.2):
+    - FMDB/standard (= 2.7.2)
+  - FMDB/standard (2.7.2)
+  - HMSegmentedControl (1.5.4)
+  - Masonry (1.1.0)
+  - SCLAlertView-Objective-C (1.1.5)
+  - SSZipArchive (2.1.1)
+  - SVProgressHUD (2.2.5)
   - SVPullToRefresh (0.4.1)
 
 DEPENDENCIES:
-  - AFNetworking (~> 3.1.0)
-  - ASValueTrackingSlider (~> 0.11.2)
-  - CocoaLumberjack (~> 2.2.0)
-  - FMDB (~> 2.5)
-  - HMSegmentedControl (~> 1.5.3)
-  - Masonry (~> 1.0.0)
-  - SCLAlertView-Objective-C (= 1.0.2)
-  - SSZipArchive (~> 1.2.0)
-  - SVProgressHUD (~> 2.0.3)
-  - SVPullToRefresh (~> 0.4.1)
+  - AFNetworking (= 3.2.0)
+  - ASValueTrackingSlider (= 0.12.1)
+  - CocoaLumberjack (= 3.4.2)
+  - FMDB (= 2.7.2)
+  - HMSegmentedControl (= 1.5.4)
+  - Masonry (= 1.1.0)
+  - SCLAlertView-Objective-C (= 1.1.5)
+  - SSZipArchive (= 2.1.1)
+  - SVProgressHUD (= 2.2.5)
+  - SVPullToRefresh (= 0.4.1)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - AFNetworking
+    - ASValueTrackingSlider
+    - CocoaLumberjack
+    - FMDB
+    - HMSegmentedControl
+    - Masonry
+    - SCLAlertView-Objective-C
+    - SSZipArchive
+    - SVProgressHUD
+    - SVPullToRefresh
 
 SPEC CHECKSUMS:
-  AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
-  ASValueTrackingSlider: 45c9f78252da60de01d8f2afe869aaf90dd978d9
-  CocoaLumberjack: 17fe8581f84914d5d7e6360f7c70022b173c3ae0
-  FMDB: 854a0341b4726e53276f2a8996f06f1b80f9259a
-  HMSegmentedControl: 7c6145afb50f26cec5f3243082f6f12b9f41318f
-  Masonry: b529bb169217897b6354d4b56b1fada6d475b13d
-  SCLAlertView-Objective-C: 25f7ea3a3526dde177d8b8056a0b88fe4187651e
-  SSZipArchive: 251093c65f98d6ea282c50bc404bfa631d9fd721
-  SVProgressHUD: b0830714205bea1317ea1a2ebc71e5633af334d4
+  AFNetworking: 8ac6017b94ea105479f7776e5288e48ae9c59bb4
+  ASValueTrackingSlider: 5261de3fcf00adb339efc93885e8f0bc99e703cd
+  CocoaLumberjack: db7cc9e464771f12054c22ff6947c5a58d43a0fd
+  FMDB: 6198a90e7b6900cfc046e6bc0ef6ebb7be9236aa
+  HMSegmentedControl: b25bc4ec44766e073d62c473188fb354ee244b76
+  Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
+  SCLAlertView-Objective-C: 69c8932c332ce61ee9e693379451e2c0b09fb307
+  SSZipArchive: 14401ade5f8e82aba1ff03e9f88e9de60937ae60
+  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SVPullToRefresh: ba2e718695a43253d8bea6852d2960097dc15d8c
 
-PODFILE CHECKSUM: 2a3b9d3c524358278f670f193243bd303840e54d
+PODFILE CHECKSUM: 974ff76a94f7ec26fd8b1301d8610cf17c1144a6
 
-COCOAPODS: 1.2.0
+COCOAPODS: 1.5.3

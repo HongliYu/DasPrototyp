@@ -30,7 +30,7 @@ typedef NS_ENUM (NSUInteger, DPMaskViewDisplayMode) {
 @property (strong, nonatomic, readonly) DPMaskViewModel *maskViewModel;
 
 // play mode
-@property (nonatomic, copy) void (^actionCallBack)();
+@property (nonatomic, copy) void (^actionCallBack)(void);
 
 // edit mode
 // moving
@@ -47,7 +47,7 @@ typedef NS_ENUM (NSUInteger, DPMaskViewDisplayMode) {
 
 // actions
 @property (nonatomic, copy) void (^resizingAction)(UIGestureRecognizer *gestureRecognizer);
-@property (nonatomic, copy) void (^deleteAction)();
-@property (nonatomic, copy) void (^tapAction)();
+@property (nonatomic, copy) void (^deleteAction)(void);
+@property (nonatomic, copy) void (^tapAction)(void);
 
 @end

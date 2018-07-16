@@ -44,10 +44,10 @@
   self.window.rootViewController = navigationController;
 }
 
-- (BOOL)application:(UIApplication *)application
+
+- (BOOL)application:(UIApplication *)app
             openURL:(NSURL *)url
-  sourceApplication:(NSString *)sourceApplication
-         annotation:(id)annotation {
+            options:(NSDictionary<UIApplicationOpenURLOptionsKey, id> *)options {
   if (url != nil && [url isFileURL]) {
     if ([[url pathExtension] isEqualToString:@"dparchive"]) {
       NSLog(@"URL:%@", [url absoluteString]);

@@ -48,12 +48,12 @@
 #pragma mark - Life Cycle
 - (void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
-  [[UIApplication sharedApplication] setStatusBarHidden:YES];
+  [self prefersStatusBarHidden];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
   [super viewDidAppear:animated];
-  [[UIApplication sharedApplication] setStatusBarHidden:YES];
+  [self prefersStatusBarHidden];
 }
 
 - (void)viewDidLoad {
@@ -211,7 +211,7 @@
   imagePickerController.delegate = self;
 //  imagePickerController.allowsEditing = YES;
 //  imagePickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-  [[UIApplication sharedApplication] setStatusBarHidden:YES];
+  [self prefersStatusBarHidden];
   [self presentViewController:imagePickerController
                      animated:YES
                    completion:^{
@@ -235,23 +235,24 @@
   if (![[DPMainManager sharedDPMainManager].currentMainViewModel.pageViewModels firstObject]) {
     return;
   }
-  PSTAlertController *controller = [PSTAlertController actionSheetWithTitle:nil];
-  [controller addAction:[PSTAlertAction actionWithTitle:@"Album"
-                                                  style:PSTAlertActionStyleDestructive
-                                                handler:^(PSTAlertAction * _Nonnull action) {
-                                                  [self albumAction:self];
-                                                }]];
-  [controller addAction:[PSTAlertAction actionWithTitle:@"Take Photo"
-                                                  style:PSTAlertActionStyleDestructive
-                                                handler:^(PSTAlertAction * _Nonnull action) {
-                                                  [self takePhotoAction:self];
-                                                }]];
-  [controller addCancelActionWithHandler:nil];
-  [controller showWithSender:sender
-              arrowDirection:UIPopoverArrowDirectionAny
-                  controller:self
-                    animated:YES
-                  completion:nil];
+  UIAlertController *controller = [UIAlertController alertControllerWithTitle:nil
+                                                                      message:nil
+                                                               preferredStyle:UIAlertControllerStyleActionSheet];
+  [controller addAction:[UIAlertAction actionWithTitle:@"Album"
+                                                 style:UIAlertActionStyleDestructive
+                                               handler:^(UIAlertAction * _Nonnull action) {
+                                                 [self albumAction: self];
+                                               }]];
+  [controller addAction:[UIAlertAction actionWithTitle:@"Take Photo"
+                                                 style:UIAlertActionStyleDestructive
+                                               handler:^(UIAlertAction * _Nonnull action) {
+                                                 [self takePhotoAction: self];
+                                               }]];
+  [controller addAction:[UIAlertAction
+                         actionWithTitle:@"Cancel"
+                         style:UIAlertActionStyleCancel
+                         handler:nil]];
+  [self presentViewController:controller animated:YES completion:nil];
 }
 
 - (IBAction)deleteAction:(id)sender {
@@ -326,7 +327,7 @@
 #pragma mark UIImagePickerControllerDelegate
 - (void)imagePickerController:(UIImagePickerController *)picker
 didFinishPickingMediaWithInfo:(NSDictionary *)info {
-  [[UIApplication sharedApplication] setStatusBarHidden:YES]; // TODO: UIImagepicker custom design
+  [self prefersStatusBarHidden]; // TODO: UIImagepicker custom design
   DPImageCrop *imageCrop = [[DPImageCrop alloc] init];
   imageCrop.delegate = self;
   imageCrop.ratioOfWidthAndHeight = SCREEN_PROPORTION;
@@ -342,9 +343,11 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
 
 // 点击Cancel按钮后执行方法
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+  __weak typeof(self) weakSelf = self;
   [self dismissViewControllerAnimated:YES
                            completion:^{
-                             [[UIApplication sharedApplication] setStatusBarHidden:YES];
+                             __strong typeof(self) strongSelf = weakSelf;
+                             [strongSelf prefersStatusBarHidden];
                            }];
 }
 

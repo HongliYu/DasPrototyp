@@ -57,7 +57,6 @@
 		F7889E5C1CD8E4DA00E68450 /* DPDBRoot.m in Sources */ = {isa = PBXBuildFile; fileRef = F7889E5B1CD8E4DA00E68450 /* DPDBRoot.m */; };
 		F78E376C1CDDD82A006394AB /* NSDate+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = F78E376B1CDDD82A006394AB /* NSDate+Additions.m */; };
 		F78E37761CDDF63F006394AB /* DPMainTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F78E37741CDDF63F006394AB /* DPMainTableViewCell.m */; };
-		F792B9401CF5B07600D6712E /* PSTAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = F792B93F1CF5B07600D6712E /* PSTAlertController.m */; };
 		F79344311D1E48350064CC58 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F79344331D1E48350064CC58 /* InfoPlist.strings */; };
 		F793443D1D1E49930064CC58 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F793443F1D1E49930064CC58 /* InfoPlist.strings */; };
 		F79A56E718CDA29700CBBC7C /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F79A56E618CDA29700CBBC7C /* AVFoundation.framework */; };
@@ -229,8 +228,6 @@
 		F78E376D1CDDE71A006394AB /* DPBlockCallBackHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DPBlockCallBackHeader.h; sourceTree = "<group>"; };
 		F78E37731CDDF63F006394AB /* DPMainTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPMainTableViewCell.h; sourceTree = "<group>"; };
 		F78E37741CDDF63F006394AB /* DPMainTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPMainTableViewCell.m; sourceTree = "<group>"; };
-		F792B93E1CF5B07600D6712E /* PSTAlertController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSTAlertController.h; sourceTree = "<group>"; };
-		F792B93F1CF5B07600D6712E /* PSTAlertController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSTAlertController.m; sourceTree = "<group>"; };
 		F79344321D1E48350064CC58 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		F79344341D1E483B0064CC58 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F793443E1D1E49930064CC58 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -392,7 +389,6 @@
 		F72302B61CD22C710099AA17 /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
-				F792B93D1CF5B07600D6712E /* PSTAlertController */,
 				F72302B71CD22C710099AA17 /* ACEExpandableTextCell */,
 				F72302C51CD22C710099AA17 /* PopUpAPI */,
 				F72302D41CD22C710099AA17 /* SZTextView */,
@@ -533,15 +529,6 @@
 				F7C684341D086CDF000760AD /* DPLinkCollectBusiness.m */,
 			);
 			path = Business;
-			sourceTree = "<group>";
-		};
-		F792B93D1CF5B07600D6712E /* PSTAlertController */ = {
-			isa = PBXGroup;
-			children = (
-				F792B93E1CF5B07600D6712E /* PSTAlertController.h */,
-				F792B93F1CF5B07600D6712E /* PSTAlertController.m */,
-			);
-			path = PSTAlertController;
 			sourceTree = "<group>";
 		};
 		F79AB8BA1CD1E3B900A0DC55 /* Services */ = {
@@ -734,7 +721,6 @@
 				F7AE0D721D1BB87900CF83B4 /* Sources */,
 				F7AE0D731D1BB87900CF83B4 /* Frameworks */,
 				F7AE0D741D1BB87900CF83B4 /* Resources */,
-				B093F69F0B3FDDD1873C315F /* [CP] Copy Pods Resources */,
 				F78D4AB31D1F4CA10062D26E /* ShellScript */,
 			);
 			buildRules = (
@@ -756,7 +742,6 @@
 				F7B9420118C9C64D009825D6 /* Resources */,
 				F73EB0551A35FD15005CA6CC /* Embed App Extensions */,
 				82A9F2D21A7350E3001E236B /* Run Script */,
-				074D5CB6D9B81B9F1F3DAC87 /* [CP] Embed Pods Frameworks */,
 				708358183B41912F5F5C5AFD /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
@@ -776,7 +761,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = hlyu;
-				LastUpgradeCheck = 0820;
+				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = HongliYu;
 				TargetAttributes = {
 					F7AE0D751D1BB87900CF83B4 = {
@@ -858,34 +843,22 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		074D5CB6D9B81B9F1F3DAC87 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DasPrototyp/Pods-DasPrototyp-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		401DD6FCFDF8E7F35B7462A2 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DasPrototyp-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		52BC2BB7C639A79C584F60AC /* [CP] Check Pods Manifest.lock */ = {
@@ -894,13 +867,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DPTodayExtension-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		708358183B41912F5F5C5AFD /* [CP] Copy Pods Resources */ = {
@@ -909,9 +885,12 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-DasPrototyp/Pods-DasPrototyp-resources.sh",
+				"${PODS_ROOT}/SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SVProgressHUD.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -931,21 +910,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "./Fabric.framework/run ab19721fa70a9eb66ab51ca19ffec9c2f56fde52 006a95af9f8189a54eb229abfdfd897f14d02af6720b357ca3e72618e092b1d8";
-		};
-		B093F69F0B3FDDD1873C315F /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DPTodayExtension/Pods-DPTodayExtension-resources.sh\"\n";
-			showEnvVarsInLog = 0;
 		};
 		F78D4AB31D1F4CA10062D26E /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1028,7 +992,6 @@
 				F707A0BB1D00508700261E44 /* DPDraggableButton.m in Sources */,
 				F78E37761CDDF63F006394AB /* DPMainTableViewCell.m in Sources */,
 				F72302E91CD22C710099AA17 /* SZTextView.m in Sources */,
-				F792B9401CF5B07600D6712E /* PSTAlertController.m in Sources */,
 				F7E927181A2390A30063B87D /* DPTakePhotosViewController.m in Sources */,
 				F707A0B21D0047DB00261E44 /* DPSideMenu.m in Sources */,
 				F72302DE1CD22C710099AA17 /* ACEExpandableTextCell.m in Sources */,
@@ -1157,12 +1120,12 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = DPTodayExtension/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.HongliYu.DasPrototyp.DPTodayExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "9993b224-433e-484c-b97c-fd4adc31a37f";
+				PROVISIONING_PROFILE = "8de23c59-653c-43b9-95dc-ca143a54b62a";
 				PROVISIONING_PROFILE_SPECIFIER = DPTodayExtensionDevPP;
 				SKIP_INSTALL = YES;
 			};
@@ -1184,7 +1147,7 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = DPTodayExtension/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.HongliYu.DasPrototyp.DPTodayExtension;
@@ -1204,14 +1167,22 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -1235,7 +1206,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
@@ -1251,14 +1222,22 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -1275,7 +1254,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -1292,6 +1271,7 @@
 				CODE_SIGN_ENTITLEMENTS = DasPrototyp/DasPrototyp.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Hongli Yu (96A6PSQDK2)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Hongli Yu (96A6PSQDK2)";
+				DEVELOPMENT_TEAM = FC9QT6TC28;
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1304,10 +1284,11 @@
 					"POP_DEBUG=1",
 				);
 				INFOPLIST_FILE = "DasPrototyp/Supporting Files/DasPrototyp-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.HongliYu.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = DasPrototyp;
-				PROVISIONING_PROFILE = "8ea5a55c-9a69-46e1-84bb-e14ebf238d8d";
+				PROVISIONING_PROFILE = "f666bd75-f97c-4bf3-bb6c-b8de6375532b";
+				PROVISIONING_PROFILE_SPECIFIER = DasPrototypDevPP;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1322,6 +1303,7 @@
 				CODE_SIGN_ENTITLEMENTS = DasPrototyp/DasPrototyp.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Hongli Yu (FC9QT6TC28)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Hongli Yu (FC9QT6TC28)";
+				DEVELOPMENT_TEAM = FC9QT6TC28;
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1330,10 +1312,11 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DasPrototyp/Supporting Files/DasPrototyp-Prefix.pch";
 				INFOPLIST_FILE = "DasPrototyp/Supporting Files/DasPrototyp-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.HongliYu.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = DasPrototyp;
-				PROVISIONING_PROFILE = "0dd91c4d-f3c3-4faf-acbd-215354473943";
+				PROVISIONING_PROFILE = "fd940fc1-bb62-4040-ae2f-80070205d35c";
+				PROVISIONING_PROFILE_SPECIFIER = DasPrototypDisPP;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

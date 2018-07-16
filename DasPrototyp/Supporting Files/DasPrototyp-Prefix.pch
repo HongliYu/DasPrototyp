@@ -32,6 +32,5 @@
   #import "DPBaseViewController.h"
   #import "SVProgressHUD.h"
   #import "SCLAlertView.h"
-  #import "PSTAlertController.h"
 
 #endif
