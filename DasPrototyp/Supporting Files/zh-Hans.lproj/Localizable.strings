@@ -60,6 +60,7 @@
 "Input"="输入";
 "Delay Time"="延迟时间";
 "delay"="延迟";
+"Value" = "值";
 
 // Page Detail
 "Hold On..."="等等…";
@@ -85,3 +86,6 @@
 // Access Permission
 "Need to access camera" = "需要访问相机";
 "Need to access photo library" = "需要访问相册";
+
+// Venders
+"Failed to load web image"="加载网络图片失败";

@@ -163,10 +163,6 @@ static const NSTimeInterval kDefualRatioOfWidthAndHeight = 1.0f;
   [self.scrollView addGestureRecognizer:doubleTap];
 }
 
-- (void)didReceiveMemoryWarning {
-  [super didReceiveMemoryWarning];
-}
-
 #pragma mark create view helper
 - (UIView*)acquireBlackTransparentOverlayView {
   UIView *view = [[UIView alloc]init];
@@ -308,7 +304,7 @@ static const NSTimeInterval kDefualRatioOfWidthAndHeight = 1.0f;
       return;
     }
     UILabel *tipsLabel = [[UILabel alloc]initWithFrame:CGRectMake((weakSelf.view.bounds.size.width-120)/2, (weakSelf.view.bounds.size.height-30)/2, 120, 30)];
-    tipsLabel.text = @"加载网络图片失败";
+    tipsLabel.text = NSLocalizedString(@"Failed to load web image", @"");
     tipsLabel.layer.opacity = .4f;
     tipsLabel.layer.cornerRadius = 3.0f;
     tipsLabel.font = [UIFont systemFontOfSize:13.0f];
@@ -394,7 +390,7 @@ static const NSTimeInterval kDefualRatioOfWidthAndHeight = 1.0f;
   self.buttonBackgroundView.frame = CGRectMake(0, CGRectGetHeight(self.view.bounds)-kButtonViewHeight,
                                                CGRectGetWidth(self.view.bounds),kButtonViewHeight);
   //底部俩按钮
-#define kButtonWidth 50
+#define kButtonWidth 100
   self.cancelButton.frame = CGRectMake(15, CGRectGetMinY(self.buttonBackgroundView.frame), kButtonWidth, kButtonViewHeight);
   self.confirmButton.frame = CGRectMake(CGRectGetWidth(self.buttonBackgroundView.frame)-kButtonWidth-15, CGRectGetMinY(self.buttonBackgroundView.frame), kButtonWidth, kButtonViewHeight);
   

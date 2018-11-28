@@ -54,8 +54,6 @@ static const float kDragLinkPadding = 8.f;
   [self configBaseUI];
   [self configBaseData];
   [self bindActions];
-  [self addNotifications];
-  [self configBusinessRouter];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
@@ -64,14 +62,6 @@ static const float kDragLinkPadding = 8.f;
                       completion:^(BOOL finished) {
     ;
   }];
-}
-
-- (void)dealloc {
-
-}
-
-- (void)didReceiveMemoryWarning {
-  [super didReceiveMemoryWarning];
 }
 
 #pragma mark - State
@@ -88,7 +78,6 @@ static const float kDragLinkPadding = 8.f;
                                                       self.detailImageView.image = image;
                                                     });
                                                   }];
-  // TODO: mansory animation
   // dragButton
   _dragButton = [[DPDraggableButton alloc] initInKeyWindowWithFrame:
                  CGRectMake(0, SCREEN_HEIGHT * 0.75f, 44.f, 44.f)];
@@ -397,8 +386,7 @@ static const float kDragLinkPadding = 8.f;
 - (void)bindActionWithMaskView:(DPMaskView *)maskView {
   __weak typeof(self) weakSelf = self;
   DPEventSignalComponent *eventSignalComponent = [[DPEventSignalComponent alloc]
-                                                  initWithTableViewRect:CGRectMake(0, 0, SCREEN_WIDTH / 3.f, SCREEN_HEIGHT / 4.f)
-                                                  datasource:[DPMainManager sharedDPMainManager].currentMaskViewModel];
+                                                  initWithDatasource:[DPMainManager sharedDPMainManager].currentMaskViewModel];
   // MARK: 不要在block内部创建DPEventSignalComponent对象，会导致组件内部tableview的delegate的一部分没有执行，这是个经典的坑
   [maskView setTapAction:^{
     __strong typeof(self) strongSelf = weakSelf;
@@ -482,16 +470,6 @@ static const float kDragLinkPadding = 8.f;
   [self dismissWithAnimationType:DPFade completion:^(BOOL finished) {
     ;
   }];
-}
-
-#pragma mark - Notifications
-- (void)addNotifications {
-  ;
-}
-
-#pragma mark - Business Router
-- (void)configBusinessRouter {
-
 }
 
 @end

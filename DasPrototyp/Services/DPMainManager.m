@@ -14,6 +14,7 @@
 #import "DPPageViewModel.h"
 #import "DPMaskViewModel.h"
 #import "SSZipArchive.h"
+#import "DPDeviceUtils.h"
 
 NSString *const kMainCellIdentifier = @"DPMainTableViewCell";
 NSString *const kPhotoCellIdentifier = @"DPPhotoCollectionViewCell";
@@ -22,7 +23,7 @@ NSString *const kPhotoCellIdentifier = @"DPPhotoCollectionViewCell";
 
 @property (nonatomic, strong, readwrite) NSMutableArray *mainViewModels;
 @property (nonatomic, strong, readwrite) DPDataManager *dataManager;
-@property (nonatomic, strong, readwrite) DPNetworkService *networkService;
+@property (nonatomic, strong, readwrite) DPNetworkService *networkService; // TTODO: move to datamanager
 @property (nonatomic, strong, readwrite) DPMainViewModel *currentMainViewModel;
 @property (nonatomic, strong, readwrite) DPMaskViewModel *currentMaskViewModel;
 @property (nonatomic, strong, readwrite) DPPageViewModel *currentPageViewModel;
@@ -38,55 +39,21 @@ NSString *const kPhotoCellIdentifier = @"DPPhotoCollectionViewCell";
 @implementation DPMainManager
 DEFINE_SINGLETON_FOR_CLASS(DPMainManager)
 
-- (NSString *)tempUnzipPath {
-  NSString *path = [NSString stringWithFormat:@"%@/\%@",
-                    NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES)[0],
-                    [NSUUID UUID].UUIDString];
-  NSURL *url = [NSURL fileURLWithPath:path];
-  NSError *error = nil;
-  [[NSFileManager defaultManager] createDirectoryAtURL:url
-                           withIntermediateDirectories:YES
-                                            attributes:nil
-                                                 error:&error];
-  if (error) {
-    return nil;
-  }
-  return url.path;
-}
-
 - (void)checkIfNeedDemo {
   if (![USER_DEFAULT objectForKey:@"NeedDemo"]) {
     NSString *resourcePath = nil;
-    NSString *archiveName = nil;
-    if (DEVICE_IS_IPHONE4s) {
-      archiveName = @"iPhone4sDemo";
-      resourcePath = [[NSBundle mainBundle] pathForResource:archiveName
-                                                     ofType:@"dparchive"];
-    }
-    if (DEVICE_IS_IPHONE5) {
-      archiveName = @"iPhone5Demo";
-      resourcePath = [[NSBundle mainBundle] pathForResource:archiveName
-                                                     ofType:@"dparchive"];
-    }
-    if (DEVICE_IS_IPHONE6) {
-      archiveName = @"iPhone6Demo";
-      resourcePath = [[NSBundle mainBundle] pathForResource:archiveName
-                                                     ofType:@"dparchive"];
-    }
-    if (DEVICE_IS_IPHONE6_PLUS) {
-      archiveName = @"iPhone6PlusDemo";
-      resourcePath = [[NSBundle mainBundle] pathForResource:archiveName
-                                                     ofType:@"dparchive"];
-    }
+    NSString *screenSize = [DPDeviceUtils checkDeviceScreen];
+    resourcePath = [[NSBundle mainBundle] pathForResource:screenSize ofType:@"dparchive"];
     NSString *demoDirectoryPath = [[DPFileManager DocumentDirectory] stringByAppendingPathComponent:@"Demos"];
     [DPFileManager createDirectory:demoDirectoryPath];
-    NSString *demoFilePath = [NSString stringWithFormat:@"%@/%@.dparchive", demoDirectoryPath, archiveName];
+    NSString *demoFilePath = [NSString stringWithFormat:@"%@/%@.dparchive", demoDirectoryPath, screenSize];
     [DPFileManager copyFile:resourcePath to:demoFilePath];
     [self checkNewProjectWithDirectory:@"Demos"];
-    [USER_DEFAULT setObject:@"OK" forKey:@"NeedDemo"];
+    [USER_DEFAULT setObject:@"Deployed" forKey:@"NeedDemo"];
   }
 }
 
+// TODO: move to data manager, all files' operations, disk related
 - (void)checkNewProjectWithDirectory:(NSString *)directory {
   dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
     NSError *error = nil;
@@ -115,11 +82,11 @@ DEFINE_SINGLETON_FOR_CLASS(DPMainManager)
             BOOL success = [SSZipArchive unzipFileAtPath:zipFileFullPath
                                            toDestination:unzipFileFullPath];
             if (!success) {
+              DLog(@"SSZipArchive Unzip Error");
               return;
             }
             [DPFileManager removeFile:zipFileFullPath];
-            NSString *JSONFilePath = [NSString stringWithFormat:@"%@/%@.json",unzipFileFullPath, projectTitle];
-            
+            NSString* JSONFilePath = [self findRightJSONFilePath:unzipFileFullPath];
             NSData *JSONData = [NSData dataWithContentsOfFile:JSONFilePath];
             NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:JSONData
                                                                        options:kNilOptions
@@ -156,52 +123,70 @@ DEFINE_SINGLETON_FOR_CLASS(DPMainManager)
   });
 }
 
+// MARK: JSON 文件解压缩以后，中文乱码问题的临时解决方案
+- (NSString *)findRightJSONFilePath: (NSString *)sourcePath {
+  NSArray* dirs = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:sourcePath
+                                                                      error:NULL];
+  NSMutableArray *files = [[NSMutableArray alloc] init];
+  [dirs enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+    NSString *filename = (NSString *)obj;
+    NSString *extension = [[filename pathExtension] lowercaseString];
+    if ([extension isEqualToString:@"json"]) {
+      [files addObject:[sourcePath stringByAppendingPathComponent:filename]];
+    }
+  }];
+  return [files firstObject];
+}
+
 - (void)createReferenceTreeWithMainViewModel:(DPMainViewModel *)mainViewModel
                                   completion:(finishedCompletionHandler)completion {
-  if (!mainViewModel.pageViewModels) {
+  if (!mainViewModel.pageViewModels || ![mainViewModel.pageViewModels firstObject]) {
     [self.dataManager selectPageViewModelsWithMainViewModelID:mainViewModel.identifier
                                                    completion:^(NSMutableArray *mutableArrayResult) {
-                                                     for (NSDictionary *rawPageViewModelDictionary in mutableArrayResult) {
-                                                       DPPageViewModel *pageViewModel = [[DPPageViewModel alloc] initWithSeparatedDictionary:rawPageViewModelDictionary];
-                                                       if (![mainViewModel.pageViewModels containsObject:pageViewModel]) {
-                                                         [mainViewModel.pageViewModels addObject:pageViewModel];
-                                                       }
-                                                     }
-                                                     if (mainViewModel.pageViewModels) {
-                                                       [self createReferenceTreeWithPageViewModels:mainViewModel.pageViewModels
-                                                                                        completion:^(BOOL finished) {
-                                                                                          if (finished && completion) {
-                                                                                            completion(YES);
-                                                                                          }
-                                                                                        }];
-                                                     }
-                                                   }];
+       for (NSDictionary *rawPageViewModelDictionary in mutableArrayResult) {
+         DPPageViewModel *pageViewModel = [[DPPageViewModel alloc] initWithSeparatedDictionary:rawPageViewModelDictionary];
+         if (![mainViewModel.pageViewModels containsObject:pageViewModel]) {
+           [mainViewModel.pageViewModels addObject:pageViewModel];
+         }
+       }
+       if (mainViewModel.pageViewModels) {
+         [self createReferenceTreeWithPageViewModels:mainViewModel.pageViewModels
+                                          completion:^(BOOL finished) {
+            if (finished && completion) {
+              completion(YES);
+            }
+          }];
+       }
+     }];
   } else {
     [self createReferenceTreeWithPageViewModels:mainViewModel.pageViewModels
                                      completion:^(BOOL finished) {
-                                       if (finished && completion) {
-                                         completion(YES);
-                                       }
-                                     }];
+       if (finished && completion) {
+         completion(YES);
+       }
+     }];
   }
 }
 
 - (void)createReferenceTreeWithPageViewModels:(NSMutableArray *)pageViewModels
                                    completion:(finishedCompletionHandler)completion {
-  dispatch_queue_t concurrentQueue = dispatch_queue_create("com.hongliyu.dasprototyp.reference_tree", DISPATCH_QUEUE_CONCURRENT);
+//  dispatch_queue_t concurrentQueue = dispatch_queue_create("com.hongliyu.dasprototyp.reference_tree", DISPATCH_QUEUE_CONCURRENT);
+  
+  dispatch_queue_t concurrentQueue = self.dataManager.dataQueue;
   dispatch_queue_t notifyQueue = dispatch_get_main_queue();
   dispatch_group_t dispatchGroup = dispatch_group_create();
+
   for (DPPageViewModel *pageViewModel in pageViewModels) {
     dispatch_group_async(dispatchGroup, concurrentQueue, ^{
-      [self.dataManager selectMaskViewModelsWithPageViewModelID:pageViewModel.identifier
-                                                     completion:^(NSMutableArray *mutableArrayResult) {
-                                                       for (NSDictionary *rawMaskViewModelDictionary in mutableArrayResult) {
-                                                         DPMaskViewModel *maskViewModel = [[DPMaskViewModel alloc] initWithSeparatedDictionary:rawMaskViewModelDictionary];
-                                                         if (![pageViewModel.maskViewModels containsObject:maskViewModel]) {
-                                                           [pageViewModel.maskViewModels addObject:maskViewModel];
-                                                         }
-                                                       }
-                                                     }];
+      [self.dataManager selectMaskViewModelsWithPageViewModelID_dispatchSync:pageViewModel.identifier
+                                                                  completion:^(NSMutableArray *mutableArrayResult) {
+        for (NSDictionary *rawMaskViewModelDictionary in mutableArrayResult) {
+          DPMaskViewModel *maskViewModel = [[DPMaskViewModel alloc] initWithSeparatedDictionary:rawMaskViewModelDictionary];
+          if (![pageViewModel.maskViewModels containsObject:maskViewModel]) {
+            [pageViewModel.maskViewModels addObject:maskViewModel];
+          }
+        }
+      }];
     });
   }
   dispatch_group_notify(dispatchGroup, notifyQueue, ^{
@@ -413,7 +398,6 @@ DEFINE_SINGLETON_FOR_CLASS(DPMainManager)
     [self.dataManager updateMainViewModel:mainViewModel];
   }
 }
-
 
 - (void)restoreMainViewModels:(finishedCompletionHandler)completion {
   if (completion) {

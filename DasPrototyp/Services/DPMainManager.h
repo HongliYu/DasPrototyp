@@ -20,7 +20,7 @@ extern NSString *const kMainCellIdentifier;
 typedef NS_ENUM (NSUInteger, DPCollectState) {
   DPCollectStateNormal,
   DPCollectStateEdit
-};// TODO: encapsulate to business
+};
 
 @interface DPMainManager : NSObject
 DEFINE_SINGLETON_FOR_HEADER(DPMainManager)
@@ -38,7 +38,7 @@ DEFINE_SINGLETON_FOR_HEADER(DPMainManager)
 - (void)exitPlayMode;
 @property (nonatomic, assign, getter=isDoingAnimation) BOOL doingAnimation; // animation lock
 - (void)enterAnimationMode;
-- (void)exitAnimationMode;// TODO: encapsulate to business
+- (void)exitAnimationMode;
 
 // Constant state
 @property (assign, nonatomic, readonly) DPCollectState collectState;

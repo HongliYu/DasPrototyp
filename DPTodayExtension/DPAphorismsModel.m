@@ -1,9 +1,9 @@
 //
 //  DPAphorismsModel.m
-//  DasPrototyp
+//  DPTodayExtension
 //
-//  Created by HongliYu on 16/6/24.
-//  Copyright © 2016年 HongliYu. All rights reserved.
+//  Created by Hongli Yu on 2018/11/19.
+//  Copyright © 2018 HongliYu. All rights reserved.
 //
 
 #import "DPAphorismsModel.h"
@@ -41,7 +41,7 @@
 }
 
 - (void)encodeWithCoder:(NSCoder *)coder {
-  if (self.identifier) [coder encodeObject:self.identifier forKey:@"id"];
+  if (self.identifier != nil) [coder encodeObject:self.identifier forKey:@"ID"];
   if (self.title != nil) [coder encodeObject:self.title forKey:@"title"];
   if (self.content != nil) [coder encodeObject:self.content forKey:@"content"];
   if (self.link != nil) [coder encodeObject:self.link forKey:@"link"];

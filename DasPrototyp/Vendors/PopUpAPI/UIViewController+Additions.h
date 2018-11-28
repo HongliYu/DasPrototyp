@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-// TODO: Refactoring the code with Swift
 typedef NS_ENUM(NSUInteger, DPAnimationType) {
   DPSlideBottomTop = 0,
   DPSlideBottomBottom,

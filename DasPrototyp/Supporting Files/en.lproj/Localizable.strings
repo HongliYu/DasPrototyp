@@ -60,6 +60,7 @@
 "Input"="Input";
 "Delay Time"="Delay Time";
 "delay"="delay";
+"Value" = "Value";
 
 // Page Detail
 "Hold On..."="Hold On...";
@@ -83,5 +84,8 @@
 "loading..."="loading...";
 
 // Access Permission
-"Need to access camera" = "Need to access camera";
-"Need to access photo library" = "Need to access photo library";
+"Need to access camera"="Need to access camera";
+"Need to access photo library"="Need to access photo library";
+
+// Venders
+"Failed to load web image"="Failed to load web image";

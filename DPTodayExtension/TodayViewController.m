@@ -2,8 +2,8 @@
 //  TodayViewController.m
 //  DPTodayExtension
 //
-//  Created by HongliYu on 16/6/23.
-//  Copyright © 2016年 HongliYu. All rights reserved.
+//  Created by Hongli Yu on 2018/11/19.
+//  Copyright © 2018 HongliYu. All rights reserved.
 //
 
 #import "TodayViewController.h"
@@ -11,17 +11,13 @@
 #import "DPNetworkService.h"
 #import "DPBlockCallBackHeader.h"
 #import "DPAphorismsModel.h"
-#import "NSString+Additions.h"
 #import "DPCommonUtils.h"
-#import "UIViewAdditions.h"
 #import "DPMainMacro.h"
-#import "Masonry.h"
 #import "NSString+HTML.h"
 
 @interface TodayViewController () <NCWidgetProviding>
 
-@property (strong, nonatomic) UILabel *contentLabel;
-@property (strong, nonatomic) UILabel *loadingView;
+@property (strong, nonatomic) IBOutlet UILabel *contentLabel;
 
 @end
 
@@ -32,54 +28,14 @@
   [self refreshRequest];
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-  [super viewDidAppear:animated];
-  
-}
-
 - (void)viewDidLoad {
   [super viewDidLoad];
   [self configBaseUI];
 }
 
 - (void)configBaseUI {
-
   self.preferredContentSize = CGSizeMake(0, 0);
-  [self.view setTranslatesAutoresizingMaskIntoConstraints:NO];
-  
-  self.contentLabel = [[UILabel alloc] init];
-  self.contentLabel.numberOfLines = 0;
-  [self.contentLabel setFont:[UIFont systemFontOfSize:16.f]];
-  [self.contentLabel setTextColor:[UIColor lightTextColor]];
-  [self.contentLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
-  [self.view addSubview:self.contentLabel];
-  
-  self.loadingView = [[UILabel alloc] init];
-  self.loadingView.text = NSLocalizedString(@"loading...", @"");
-  [self.loadingView setFont:[UIFont systemFontOfSize:18.f]];
-  [self.loadingView setTextColor:[UIColor lightTextColor]];
-  [self.loadingView setTranslatesAutoresizingMaskIntoConstraints:NO];
-  [self.loadingView setHidden:NO];
-  [self.view addSubview:self.loadingView];
-  
-  [self.view mas_updateConstraints:^(MASConstraintMaker *make) {
-    make.height.equalTo(@20);
-  }];
-
-  [self.loadingView mas_makeConstraints:^(MASConstraintMaker *make) {
-    make.left.equalTo(@0);
-    make.top.equalTo(@0);
-    make.width.equalTo(@(SCREEN_WIDTH));
-    make.height.equalTo(@0);
-  }];
-  
-  NSString *version = [UIDevice currentDevice].systemVersion;
-  if (version.doubleValue >= 10.0) {
-    self.extensionContext.widgetLargestAvailableDisplayMode = NCWidgetDisplayModeExpanded;
-    [self.contentLabel setTextColor:[UIColor darkTextColor]];
-    [self.loadingView setTextColor:[UIColor darkTextColor]];
-  }
-  
+  self.extensionContext.widgetLargestAvailableDisplayMode = NCWidgetDisplayModeExpanded;
 }
 
 - (void)refreshRequest {
@@ -97,33 +53,26 @@
         }
       }
     }
-    [self.loadingView setHidden:YES];
   }];
 }
 
 - (void)updateUIWithData:(DPAphorismsModel *)aphorismsModel {
   NSString *filteredContent =  [self removeHTML: aphorismsModel.content];
+  NSString *filteredTitle =  [self removeHTML: aphorismsModel.title];
   self.contentLabel.text = [NSString stringWithFormat:@"%@ <<< %@ ",
                             filteredContent.stringByDecodingHTMLEntities,
-                            aphorismsModel.title];
-  CGSize contentSize = [DPCommonUtils rectSizeWithText:self.contentLabel.text
-                                           andFontSize:18.f];
-  [self.view mas_updateConstraints:^(MASConstraintMaker *make) {
-    make.height.equalTo(@(contentSize.height));
-  }];
-  [self.contentLabel mas_updateConstraints:^(MASConstraintMaker *make) {
-    make.left.equalTo(@18);
-    make.top.equalTo(@0);
-    make.width.equalTo(@(SCREEN_WIDTH - 18 * 2));
-    make.height.equalTo(@(contentSize.height));
-  }];
+                            filteredTitle.stringByDecodingHTMLEntities];
 }
 
-- (void)widgetActiveDisplayModeDidChange:(NCWidgetDisplayMode)activeDisplayMode withMaximumSize:(CGSize)maxSize {
+- (void)widgetActiveDisplayModeDidChange:(NCWidgetDisplayMode)activeDisplayMode
+                         withMaximumSize:(CGSize)maxSize {
   if (activeDisplayMode == NCWidgetDisplayModeCompact) {
     self.preferredContentSize = maxSize;
   } else {
-    self.preferredContentSize = CGSizeMake(0, 200);
+    CGSize contentSize = [DPCommonUtils rectSizeWithText:self.contentLabel.text
+                                               withWidth:(SCREEN_WIDTH - 16 * 2)
+                                             andFontSize:16.f];
+    self.preferredContentSize = CGSizeMake(0, contentSize.height);
   }
 }
 
@@ -135,14 +84,6 @@
   }
   NSString *plainText = [componentsToKeep componentsJoinedByString:@""];
   return plainText;
-}
-
-- (UIEdgeInsets)widgetMarginInsetsForProposedMarginInsets:(UIEdgeInsets)defaultMarginInsets {
-  return UIEdgeInsetsZero;
-}
-
-- (void)didReceiveMemoryWarning {
-  [super didReceiveMemoryWarning];
 }
 
 - (void)widgetPerformUpdateWithCompletionHandler:(void (^)(NCUpdateResult))completionHandler {
