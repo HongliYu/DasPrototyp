@@ -9,6 +9,7 @@
 #import "DPEventSignalComponent.h"
 #import "DPEventSignalTableViewCell.h"
 #import "DPMaskViewModel.h"
+#import "DPCommonUtils.h"
 
 static NSString *const kDPEventSignalTableViewCell = @"DPEventSignalTableViewCell";
 
@@ -23,8 +24,7 @@ static NSString *const kDPEventSignalTableViewCell = @"DPEventSignalTableViewCel
 
 @implementation DPEventSignalComponent
 
-- (instancetype)initWithTableViewRect:(CGRect)rect
-                           datasource:(DPMaskViewModel *)maskViewModel {
+- (instancetype)initWithDatasource:(DPMaskViewModel *)maskViewModel {
   self = [super init];
   if (self) {
     _dataArray = @[NSLocalizedString(@"PressDown", @""),
@@ -36,6 +36,15 @@ static NSString *const kDPEventSignalTableViewCell = @"DPEventSignalTableViewCel
                    NSLocalizedString(@"Rotate", @""),
                    NSLocalizedString(@"Pinch", @""),];
     _maskViewModel = maskViewModel;
+    float maxWidth = 0;
+    for (NSString* gestureString in _dataArray) {
+      float widthIs = [DPCommonUtils rectSizeWithText:gestureString
+                                          andFontSize:(15.f * (SCREEN_WIDTH / 375.f))].width;
+      if (widthIs > maxWidth) {
+        maxWidth = widthIs;
+      }
+    }
+    CGRect rect = CGRectMake(0, 0, maxWidth + 40, SCREEN_HEIGHT / 4.f);
     _switchSignalTableView = [[UITableView alloc] initWithFrame:rect];
     _switchSignalTableView.dataSource = self;
     _switchSignalTableView.delegate = self;

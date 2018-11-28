@@ -22,34 +22,24 @@
 #pragma mark - Life Cycle
 - (void)viewDidLoad {
   [super viewDidLoad];
-  [self addNotifications];
   [self configBaseUI];
-  [self configBaseData];
-  [self bindActions];
 }
 
-- (void)didReceiveMemoryWarning {
-  [super didReceiveMemoryWarning];
-}
-
-#pragma mark - Notifications
-- (void)addNotifications {
-
-}
-
-#pragma mark - UI
 - (void)configBaseUI {
-
+  UITapGestureRecognizer* tapBlog = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapBlogAction)];
+  [_blogLabel addGestureRecognizer:tapBlog];
+  UITapGestureRecognizer* tapGitRepo = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGitRepoAction)];
+  [_githubLabel addGestureRecognizer:tapGitRepo];
 }
 
-#pragma mark - Data
-- (void)configBaseData {
-
+- (void)tapBlogAction {
+  NSURL *targetURL = [NSURL URLWithString:@"http://hongliyu.github.io"];
+  [[UIApplication sharedApplication] openURL:targetURL options:@{} completionHandler:nil];
 }
 
-#pragma mark - Actions
-- (void)bindActions {
-
+- (void)tapGitRepoAction {
+  NSURL *targetURL = [NSURL URLWithString:@"https://github.com/HongliYu/DasPrototyp"];
+  [[UIApplication sharedApplication] openURL:targetURL options:@{} completionHandler:nil];
 }
 
 - (IBAction)contactMeAction:(id)sender {
@@ -85,13 +75,11 @@
 
 - (void)launchMailAppOnDevice {
   NSString *recipients = @"mailto:first@example.com&subject=my email!";
-  //@"mailto:first@example.com?cc=second@example.com,third@example.com&subject=my
-  // email!";
   NSString *body = @"&body=email body!";
 
   NSString *email = [NSString stringWithFormat:@"%@%@", recipients, body];
-  email = [email stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-  [[UIApplication sharedApplication] openURL:[NSURL URLWithString:email]];
+  email = [email stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLFragmentAllowedCharacterSet]];
+  [[UIApplication sharedApplication] openURL:[NSURL URLWithString:email] options: @{} completionHandler:nil];
 }
 
 #pragma mark MFMailComposeViewControllerDelegate

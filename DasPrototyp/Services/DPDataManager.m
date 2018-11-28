@@ -14,7 +14,6 @@
 
 @property (strong, nonatomic) DPDBRoot *dbRoot;
 @property (strong, nonatomic, readwrite) DPNetworkService *networkService;
-@property (strong, nonatomic) dispatch_queue_t dataQueue;
 
 @end
 
@@ -144,6 +143,18 @@
                                                 completion:completion];
     }
   });
+}
+
+// MARK: For reference tree
+- (void)selectMaskViewModelsWithPageViewModelID_dispatchSync:(NSString *)pageViewModelID
+                                                  completion:(mutableArrayCompletionHandler)completion {
+//  dispatch_sync(_dataQueue, ^{
+    if (pageViewModelID && completion) {
+      [self.dbRoot selectMaskViewModelsWithPageViewModelID:pageViewModelID
+                                                completion:completion];
+    }
+
+//  });
 }
 
 // persist

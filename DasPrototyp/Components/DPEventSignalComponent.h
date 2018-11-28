@@ -14,7 +14,6 @@
 
 @property (nonatomic, strong, readonly) UITableView *switchSignalTableView;
 
-- (instancetype)initWithTableViewRect:(CGRect)rect
-                           datasource:(DPMaskViewModel *)maskViewModel;
+- (instancetype)initWithDatasource:(DPMaskViewModel *)maskViewModel;
 
 @end

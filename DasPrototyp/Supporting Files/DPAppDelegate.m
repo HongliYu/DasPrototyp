@@ -12,17 +12,19 @@
 #import "DPColorsViewController.h"
 #import "DPPlainColorViewController.h"
 #import "AFNetworking.h"
+#import "Firebase.h"
 
 @implementation DPAppDelegate
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions{
-  DLog(@"%@", [DPFileManager DocumentDirectory]);
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+  DLog(@"%@", DOCUMENTS_DIRECTORY)
   [self configVendors];
   [self configBaseControllers];
   return YES;
 }
 
 - (void)configVendors {
+  [FIRApp configure];
   [Fabric with:@[CrashlyticsKit]];
   [[AFNetworkReachabilityManager sharedManager] startMonitoring];
 }
@@ -44,10 +46,9 @@
   self.window.rootViewController = navigationController;
 }
 
-- (BOOL)application:(UIApplication *)application
+- (BOOL)application:(UIApplication *)app
             openURL:(NSURL *)url
-  sourceApplication:(NSString *)sourceApplication
-         annotation:(id)annotation {
+            options:(NSDictionary<UIApplicationOpenURLOptionsKey, id> *)options {
   if (url != nil && [url isFileURL]) {
     if ([[url pathExtension] isEqualToString:@"dparchive"]) {
       NSLog(@"URL:%@", [url absoluteString]);
@@ -59,8 +60,7 @@
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
-    // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-    // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
+  [[DPMainManager sharedDPMainManager] persistMainViewModel];
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
@@ -81,7 +81,7 @@
 }
 
 - (void)applicationDidReceiveMemoryWarning:(UIApplication *)application {
-    [[NSURLCache sharedURLCache] removeAllCachedResponses];
+  [[NSURLCache sharedURLCache] removeAllCachedResponses];
 }
 
 @end

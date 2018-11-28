@@ -9,11 +9,13 @@
 #import "DPCommentViewController.h"
 #import "ACEExpandableTextCell.h"
 #import "DPMainViewModel.h"
+#import "DPDeviceUtils.h"
 
 @interface DPCommentViewController () <ACEExpandableTableViewDelegate>
 
 @property(strong, nonatomic) IBOutlet UIButton *backButton;
 @property(strong, nonatomic) IBOutlet UITableView *commentTableView;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *navigationBarHeight;
 @property(assign, nonatomic) CGFloat cellHeight;
 @property(strong, nonatomic) SZTextView *commentTextView;
 @property(copy, nonatomic) NSString *commentText;
@@ -26,8 +28,6 @@
 - (void)viewDidLoad {
   [super viewDidLoad];
   [self configBaseUI];
-  [self configBaseData];
-  [self bindActions];
   [self addNotifications];
 }
 
@@ -38,10 +38,6 @@
   [[NSNotificationCenter defaultCenter] removeObserver:self
                                                   name:UIKeyboardWillHideNotification
                                                 object:nil];
-}
-
-- (void)didReceiveMemoryWarning {
-  [super didReceiveMemoryWarning];
 }
 
 #pragma mark - Notifications
@@ -78,19 +74,13 @@
 
 #pragma mark - UI
 - (void)configBaseUI {
+  self.commentText = [DPMainManager sharedDPMainManager].currentMainViewModel.comment;
   CGSize size = [DPCommonUtils rectSizeWithText:self.commentText
                                     andFontSize:18.f];
   self.cellHeight = size.height;
-}
-
-#pragma mark - Data
-- (void)configBaseData {
-  
-}
-
-#pragma mark - Actions
-- (void)bindActions {
-
+  if ([DPDeviceUtils checkIfDeviceHasBangs]) {
+    self.navigationBarHeight.constant = 44 + 44;
+  }
 }
 
 - (IBAction)backAction:(id)sender {

@@ -13,4 +13,4 @@ typedef void (^mutableArrayCompletionHandler)(NSMutableArray* mutableArrayResult
 typedef void (^resultCompletionHandler)(id result, NSError *error);
 typedef void (^finishedCompletionHandler)(BOOL finished);
 typedef void (^gestureCompletionHandler)(UIGestureRecognizer *gestureRecognizer);
-typedef void (^completionHandler)();
+typedef void (^completionHandler)(void);

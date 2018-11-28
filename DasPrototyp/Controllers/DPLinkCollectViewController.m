@@ -13,6 +13,7 @@
 #import "DPMaskViewModel.h"
 #import "DPMainViewModel.h"
 #import "DPPageViewModel.h"
+#import "DPDeviceUtils.h"
 
 @interface DPLinkCollectViewController () <UICollectionViewDataSource,
 UICollectionViewDelegateFlowLayout, UIImagePickerControllerDelegate, ASValueTrackingSliderDataSource>
@@ -23,6 +24,10 @@ UICollectionViewDelegateFlowLayout, UIImagePickerControllerDelegate, ASValueTrac
 @property (nonatomic, strong) IBOutlet UIButton* backButton;
 @property (nonatomic, strong) IBOutlet UIButton* confirmButton;
 @property (nonatomic, strong) IBOutlet UIButton* sliderValueButton;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *navigationBarHeight;
+@property (strong, nonatomic) IBOutlet UIView *toolsView;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *toolsViewHeight;
+@property (strong, nonatomic) IBOutlet UILabel *delayTimeLabel;
 @property (nonatomic, strong) HMSegmentedControl* switchModeSegmentedControl;
 @property (nonatomic, strong) HMSegmentedControl* switchDirectionSegmentedControl;
 
@@ -37,20 +42,6 @@ UICollectionViewDelegateFlowLayout, UIImagePickerControllerDelegate, ASValueTrac
   [self configBaseUI];
   [self configBaseData];
   [self bindActions];
-  [self addNotifications];
-  [self configBusinessRouter];
-}
-
-- (void)viewDidDisappear:(BOOL)animated {
-  [super viewDidDisappear:animated];
-}
-
-- (void)dealloc {
-  
-}
-
-- (void)didReceiveMemoryWarning {
-  [super didReceiveMemoryWarning];
 }
 
 #pragma mark - State
@@ -71,12 +62,14 @@ UICollectionViewDelegateFlowLayout, UIImagePickerControllerDelegate, ASValueTrac
 - (void)configBaseUI {
   [_confirmButton.titleLabel setFont:[UIFont fontWithName:@"dp_iconfont" size:18.f]];
   [_confirmButton setTitle:@"\U0000ea10" forState:UIControlStateNormal];
+  [_delayTimeLabel setText:NSLocalizedString(@"Delay Time", @"")];
   [_sliderValueButton.titleLabel setFont:[UIFont fontWithName:@"dp_iconfont" size:18.f]];
   [_sliderValueButton setBackgroundColor:MAIN_GREEN_COLOR];
+  [_sliderValueButton setTitle:NSLocalizedString(@"Value", @"") forState:UIControlStateNormal];
   [_linkCollectionView registerNib:[UINib nibWithNibName:@"DPPhotoCollectionViewCell" bundle:nil]
         forCellWithReuseIdentifier:kPhotoCellIdentifier];
   _flowLayout.itemSize = CGSizeMake([DPMainManager sharedDPMainManager].photoCellSize.width,
-                                        [DPMainManager sharedDPMainManager].photoCellSize.height);
+                                    [DPMainManager sharedDPMainManager].photoCellSize.height);
 
   _switchModeSegmentedControl = [[HMSegmentedControl alloc] initWithSectionTitles:
                                  @[NSLocalizedString(@"push", @""),
@@ -87,11 +80,12 @@ UICollectionViewDelegateFlowLayout, UIImagePickerControllerDelegate, ASValueTrac
   [_switchModeSegmentedControl setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
   [_switchModeSegmentedControl setSelectionIndicatorColor:MAIN_RED_COLOR];
   [_switchModeSegmentedControl setSelectionStyle:HMSegmentedControlSelectionStyleBox];
+  _switchModeSegmentedControl.selectionIndicatorBoxOpacity = 1.0;
   [_switchModeSegmentedControl setSelectionIndicatorLocation:HMSegmentedControlSelectionIndicatorLocationNone];
   [_switchModeSegmentedControl setSegmentEdgeInset:UIEdgeInsetsMake(0, 6, 0, 6)];
-  [_switchModeSegmentedControl setFrame:CGRectMake(0, SCREEN_HEIGHT - 52.f, SCREEN_WIDTH, 28.f)];
+  [_switchModeSegmentedControl setFrame:CGRectMake(0, 28.5f, SCREEN_WIDTH, 30.f)];
   [_switchModeSegmentedControl setSelectedSegmentIndex:[DPMainManager sharedDPMainManager].currentMaskViewModel.switchMode];
-  [self.view addSubview:_switchModeSegmentedControl];
+  [_toolsView addSubview:_switchModeSegmentedControl];
   
   _switchDirectionSegmentedControl = [[HMSegmentedControl alloc] initWithSectionTitles:
                                       @[NSLocalizedString(@"none", @""),
@@ -105,9 +99,9 @@ UICollectionViewDelegateFlowLayout, UIImagePickerControllerDelegate, ASValueTrac
   [_switchDirectionSegmentedControl setSelectionIndicatorColor:MAIN_RED_COLOR];
   [_switchDirectionSegmentedControl setSelectionIndicatorLocation: HMSegmentedControlSelectionIndicatorLocationDown];
   [_switchDirectionSegmentedControl setSegmentEdgeInset:UIEdgeInsetsMake(0, 6, 0, 6)];
-  [_switchDirectionSegmentedControl setFrame:CGRectMake(0, SCREEN_HEIGHT - 24.f, SCREEN_WIDTH, 24.f)];
+  [_switchDirectionSegmentedControl setFrame:CGRectMake(0, 58.5f, SCREEN_WIDTH, 30.f)];
   [_switchDirectionSegmentedControl setSelectedSegmentIndex:[DPMainManager sharedDPMainManager].currentMaskViewModel.switchDirection];
-  [self.view addSubview:_switchDirectionSegmentedControl];
+  [_toolsView addSubview:_switchDirectionSegmentedControl];
   
   [_delayTimeSlider setThumbImage:[DPImageUtils generateHandleImageWithColor:[UIColor redColor]]
                          forState:UIControlStateNormal];
@@ -125,6 +119,11 @@ UICollectionViewDelegateFlowLayout, UIImagePickerControllerDelegate, ASValueTrac
   _delayTimeSlider.dataSource = self;
   _delayTimeSlider.value = [DPMainManager sharedDPMainManager].currentMaskViewModel.animationDelayTime;
   [self.view bringSubviewToFront:self.delayTimeSlider];
+  
+  if ([DPDeviceUtils checkIfDeviceHasBangs]) {
+    self.navigationBarHeight.constant = 44 + 44;
+    self.toolsViewHeight.constant = 88 + 20;
+  }
 }
 
 #pragma mark - Data
@@ -165,14 +164,14 @@ UICollectionViewDelegateFlowLayout, UIImagePickerControllerDelegate, ASValueTrac
                           float tempFloat = [textField.text floatValue];
                           if (tempFloat >= 0 && tempFloat <= 5.0) {
                             self.delayTimeSlider.value = [textField.text floatValue];
+                          } else {
+                            SCLAlertView *alert = [[SCLAlertView alloc] init];
+                            [alert showError:self
+                                       title:NSLocalizedString(@"Hold On...", @"")
+                                    subTitle:NSLocalizedString(@"Please input a float between 0 and 5", @"")
+                            closeButtonTitle:NSLocalizedString(@"OK", @"")
+                                    duration:0.0f];
                           }
-                        } else {
-                          SCLAlertView *alert = [[SCLAlertView alloc] init];
-                          [alert showError:self
-                                     title:NSLocalizedString(@"Hold On...", @"")
-                                  subTitle:NSLocalizedString(@"Please input a float between 0 and 5", @"")
-                          closeButtonTitle:NSLocalizedString(@"OK", @"")
-                                  duration:0.0f];
                         }
                       }];
   [sliderValueAlertView showEdit:self
@@ -200,8 +199,9 @@ UICollectionViewDelegateFlowLayout, UIImagePickerControllerDelegate, ASValueTrac
   if (photoCollectionViewCell) {
     DPPageViewModel *pageViewModel = [DPMainManager sharedDPMainManager].currentMainViewModel.pageViewModels[indexPath.row];
     [photoCollectionViewCell bindData:pageViewModel];
+    return photoCollectionViewCell;
   }
-  return photoCollectionViewCell;
+  return [[UICollectionViewCell alloc] init];
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -222,16 +222,6 @@ UICollectionViewDelegateFlowLayout, UIImagePickerControllerDelegate, ASValueTrac
   [[DPMainManager sharedDPMainManager].currentMaskViewModel setAnimationDelayTime:value];
   NSString *string = [NSString stringWithFormat:@"%@:%.2fs", NSLocalizedString(@"delay", @""), value];
   return string;
-}
-
-#pragma mark - Notifications
-- (void)addNotifications {
-  ;
-}
-
-#pragma mark - Business Router
-- (void)configBusinessRouter {
-
 }
 
 @end

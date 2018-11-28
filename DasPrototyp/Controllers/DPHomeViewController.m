@@ -11,12 +11,14 @@
 #import "DPMainTableViewCell.h"
 #import "DPMainViewModel.h"
 #import "DPHomeBusiness.h"
+#import "DPDeviceUtils.h"
 
 @interface DPHomeViewController ()
 
 @property (strong, nonatomic) IBOutlet UITableView *homeTableView;
 @property (strong, nonatomic) IBOutlet UIButton *addNewProjectButton;
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *navigationBarHeight;
 @property (strong, nonatomic) DPHomeBusiness *homeBusiness;
 
 @end
@@ -31,16 +33,7 @@
   [self configBaseUI];
   [self configBaseData];
   [self bindActions];
-  [self addNotifications];
   [[DPMainManager sharedDPMainManager] checkIfNeedDemo];
-}
-
-- (void)didReceiveMemoryWarning {
-  [super didReceiveMemoryWarning];
-}
-
-- (void)dealloc {
-
 }
 
 #pragma mark - State
@@ -64,6 +57,9 @@
                                                                size:28.f]];
   [self.addNewProjectButton setTitle:@"\U0000ea0a"
                             forState:UIControlStateNormal];
+  if ([DPDeviceUtils checkIfDeviceHasBangs]) {
+    self.navigationBarHeight.constant = 44 + 44;
+  }
 }
 
 #pragma mark - Data
@@ -120,12 +116,6 @@
                           subTitle:NSLocalizedString(@"Name", @"")
                   closeButtonTitle:NSLocalizedString(@"Cancel", @"")
                           duration:0.0f];
-}
-
-
-#pragma mark - Notifications
-- (void)addNotifications {
-  
 }
 
 @end

@@ -2,10 +2,15 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
 	<key>CFBundleDevelopmentRegion</key>
-	<string>en</string>
+	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>${PRODUCT_NAME}</string>
+	<string>DPTodayExtension</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -17,26 +22,15 @@
 	<key>CFBundlePackageType</key>
 	<string>XPC!</string>
 	<key>CFBundleShortVersionString</key>
-	<string>2.1.0</string>
-	<key>CFBundleSignature</key>
-	<string>????</string>
+	<string>1.0</string>
 	<key>CFBundleVersion</key>
-	<string>3</string>
-	<key>NSAppTransportSecurity</key>
-	<dict>
-		<key>NSAllowsArbitraryLoads</key>
-		<true/>
-	</dict>
-	<key>NSCameraUsageDescription</key>
-	<string>Need to access camera</string>
+	<string>1</string>
 	<key>NSExtension</key>
 	<dict>
+		<key>NSExtensionMainStoryboard</key>
+		<string>MainInterface</string>
 		<key>NSExtensionPointIdentifier</key>
 		<string>com.apple.widget-extension</string>
-		<key>NSExtensionPrincipalClass</key>
-		<string>TodayViewController</string>
 	</dict>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Need to access photo library</string>
 </dict>
 </plist>

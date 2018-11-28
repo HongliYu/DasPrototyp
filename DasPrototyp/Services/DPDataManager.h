@@ -17,6 +17,8 @@
  */
 @interface DPDataManager : NSObject
 
+@property (strong, nonatomic) dispatch_queue_t dataQueue;
+
 #pragma mark - Network
 
 #pragma mark - User Default
@@ -55,6 +57,9 @@
                                      completion:(mutableArrayCompletionHandler)completion;
 - (void)selectMaskViewModelsWithPageViewModelID:(NSString *)pageViewModelID
                                      completion:(mutableArrayCompletionHandler)completion;
+- (void)selectMaskViewModelsWithPageViewModelID_dispatchSync:(NSString *)pageViewModelID
+                                                  completion:(mutableArrayCompletionHandler)completion;
+
 // persist
 - (void)persistMainViewModel:(DPMainViewModel *)mainViewModel;
 

@@ -47,10 +47,6 @@ static NSString *const kICSColorsViewControllerCellReuseId = @"kICSColorsViewCon
   [self.tableView setBackgroundColor:MAIN_GREEN_COLOR];
 }
 
-- (void)didReceiveMemoryWarning {
-  [super didReceiveMemoryWarning];
-}
-
 #pragma mark - Configuring the view’s layout behavior
 - (UIStatusBarStyle)preferredStatusBarStyle {
   // Even if this view controller hides the status bar, implementing this method
@@ -144,12 +140,12 @@ static NSString *const kICSColorsViewControllerCellReuseId = @"kICSColorsViewCon
       }
       case DPLeftViewControllerCellRate: {
         NSString *urlString = [NSString stringWithFormat:@"itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewSoftware?id=%@", @"910117892"];
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlString]];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlString] options:@{} completionHandler:nil];
         break;
       }
       case DPLeftViewControllerCellDonate: {
         NSURL *targetURL = [NSURL URLWithString:@"https://qr.alipay.com/apeez0tpttrt2yove2"];
-        [[UIApplication sharedApplication] openURL:targetURL];
+        [[UIApplication sharedApplication] openURL:targetURL options:@{} completionHandler:nil];
         break;
       }
     }

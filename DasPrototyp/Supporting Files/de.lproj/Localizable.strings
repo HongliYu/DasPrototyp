@@ -1,0 +1,91 @@
+/* Localized versions of Info.plist keys */
+
+// Left TableView
+"DasPrototyp"="DasPrototyp";
+"Projects"="Projekte";
+"Support"="Unterstützung";
+"Rate This App"="Bewerte diese App";
+"Donate"="Spenden";
+
+// Center TableView
+"Rename"="Umbenennen";
+"Share"="Aktie";
+"Delete"="Löschen";
+"Describe the project"="Beschreiben Sie das Projekt";
+"New Project"="Neues Projekt";
+"Enter Project name"="Geben Sie den Projektnamen ein";
+"Rename Project"="Projekt umbenennen";
+"New Name"="Neuer Name";
+"Name"="Name";
+"Project Name"="Projektname";
+"No wifi connection"="Keine WiFi-Verbindung";
+"It may take you a lot of time sending an email with a big attachment"="Es kann sehr lange dauern, eine E-Mail mit einem großen Anhang zu versenden";
+"I changed my mind"="Ich habe meine Meinung geändert";
+"I insist"="ich bestehe darauf";
+"No content"="Kein Inhalt";
+"Mail saved"="Mail gespeichert";
+"Mail failed"="Mail fehlgeschlagen";
+"Mail sent"="Mail gesendet";
+"Pull to refresh..."="Zum Aktualisieren ziehen ...";
+"Release to refresh..."="Zur Aktualisierung freigeben ...";
+"Loading..."="Wird geladen...";
+
+// Project Detail
+"Back"="Zurück";
+"Edit"="Bearbeiten";
+"Done"="Erledigt";
+"OK"="OK";
+"Cancel"="Stornieren";
+"Tips"="Tipps";
+"Replace"="Ersetzen";
+"Take Photo"="Foto machen";
+"Album"="Album";
+"Success"="Gelingen";
+"Error"="Error";
+"Message"="Nachricht";
+"Note"="Note";
+
+// Link
+"LinkTo"="LinkZu";
+"push"="drücken";
+"cover"="Abdeckung";
+"uncover"="aufdecken";
+"none"="keiner";
+"up"="auf";
+"down"="herunter";
+"left"="links";
+"right"="Recht";
+"Enter Delay time"="Verzögerungszeit eingeben";
+"Please input a float between 0 and 5"="Bitte geben Sie einen Float zwischen 0 und 5 ein";
+"Input"="Eingang";
+"Delay Time"="Verzögerungszeit";
+"delay"="verzögern";
+"Value" = "Wert";
+
+// Page Detail
+"Hold On..."="Warten Sie mal...";
+"Select a hotspot please"="Wählen Sie bitte einen Hotspot aus";
+"Add a hotspot please"="Fügen Sie bitte einen Hotspot hinzu";
+"Gesture"="Geste";
+"PressDown"="Niederdrücken";
+"LongPress"="Lange drücken";
+"SwipeLeft"="Nach links wischen";
+"SwipeUp"="Nach oben streichen";
+"SwipeRight"="Wische nach rechts";
+"SwipeDown"="Streichen Sie nach unten";
+"Rotate"="Drehen";
+"Pinch"="Prise";
+
+// Play Mode
+"Three fingers pressed once to return"="Drei Finger drückten einmal, um zurückzukehren";
+"Got it"="Ich habs";
+
+// Extension
+"loading..."="Wird geladen...";
+
+// Access Permission
+"Need to access camera"="Zugriff auf die Kamera erforderlich";
+"Need to access photo library"="Sie müssen auf die Fotobibliothek zugreifen";
+
+// Venders
+"Failed to load web image"="Web-Image konnte nicht geladen werden";

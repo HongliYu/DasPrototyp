@@ -47,7 +47,7 @@ typedef CGFloat (^EasingFunction)(CGFloat, CGFloat, CGFloat, CGFloat);
 
 - (void)open {
   _open = YES;
-  for (UIView *item in self.items) { // TODO: GCD dispatch after
+  for (UIView *item in self.items) {
     [self performSelector:@selector(showItem:)
                withObject:item
                afterDelay:kAnimationDelay * [self.items indexOfObject:item]];

@@ -1,9 +1,9 @@
 //
 //  DPAphorismsModel.h
-//  DasPrototyp
+//  DPTodayExtension
 //
-//  Created by HongliYu on 16/6/24.
-//  Copyright © 2016年 HongliYu. All rights reserved.
+//  Created by Hongli Yu on 2018/11/19.
+//  Copyright © 2018 HongliYu. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -18,3 +18,4 @@
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary;
 
 @end
+

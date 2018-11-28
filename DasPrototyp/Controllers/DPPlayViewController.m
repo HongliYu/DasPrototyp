@@ -36,33 +36,11 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
-  [self configBaseState];
   [self configBaseUI];
   [self configBaseData];
   [self bindActions];
   [self addNotifications];
   [self configBusinessRouter];
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-  [super viewWillDisappear:animated];
-}
-
-- (void)viewDidDisappear:(BOOL)animated {
-  [super viewDidDisappear:animated];
-}
-
-- (void)didReceiveMemoryWarning {
-  [super didReceiveMemoryWarning];
-}
-
-- (void)dealloc {
-  
-}
-
-#pragma mark - State
-- (void)configBaseState {
-  
 }
 
 #pragma mark - UI

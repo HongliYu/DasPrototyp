@@ -13,18 +13,6 @@
 #define IOS_VERSION [[[UIDevice currentDevice] systemVersion] floatValue]
 #define CurrentSystemVersion ([[UIDevice currentDevice] systemVersion])
 #define CurrentLanguage ([[NSLocale preferredLanguages] objectAtIndex:0])
-
-// Device screen
-#define DEVICE_IS_IPHONE4s ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 960), [[UIScreen mainScreen] currentMode].size) : NO)
-#define DEVICE_IS_IPHONE5 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 1136), [[UIScreen mainScreen] currentMode].size) : NO)
-#define DEVICE_IS_IPHONE6 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(750, 1334), [[UIScreen mainScreen] currentMode].size) : NO)
-#define DEVICE_IS_IPHONE6_PLUS ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1242, 2208), [[UIScreen mainScreen] currentMode].size) : NO)
-
-#define DEVICE_IS_PAD (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
-
-//GCD
-#define BACK(block) dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), block)
-#define MAIN(block) dispatch_async(dispatch_get_main_queue(),block)
 #define USER_DEFAULT [NSUserDefaults standardUserDefaults]
 
 //DPColors
