@@ -47,10 +47,6 @@ static NSString *const kICSColorsViewControllerCellReuseId = @"kICSColorsViewCon
   [self.tableView setBackgroundColor:MAIN_GREEN_COLOR];
 }
 
-- (void)didReceiveMemoryWarning {
-  [super didReceiveMemoryWarning];
-}
-
 #pragma mark - Configuring the view’s layout behavior
 - (UIStatusBarStyle)preferredStatusBarStyle {
   // Even if this view controller hides the status bar, implementing this method
