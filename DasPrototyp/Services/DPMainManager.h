@@ -20,7 +20,7 @@ extern NSString *const kMainCellIdentifier;
 typedef NS_ENUM (NSUInteger, DPCollectState) {
   DPCollectStateNormal,
   DPCollectStateEdit
-};// TODO: encapsulate to business
+};
 
 @interface DPMainManager : NSObject
 DEFINE_SINGLETON_FOR_HEADER(DPMainManager)
@@ -31,14 +31,14 @@ DEFINE_SINGLETON_FOR_HEADER(DPMainManager)
 - (void)checkNewProjectWithDirectory:(NSString *)directory;
 - (void)createSharedArchive:(DPMainViewModel *)mainViewModel
                  completion:(finishedCompletionHandler)completion;
-@property (nonatomic, copy) void(^addProjectFromMailCallBack)();
+@property (nonatomic, copy) void(^addProjectFromMailCallBack)(void);
 
 // play mode
 - (void)enterPlayMode:(finishedCompletionHandler)completion;
 - (void)exitPlayMode;
 @property (nonatomic, assign, getter=isDoingAnimation) BOOL doingAnimation; // animation lock
 - (void)enterAnimationMode;
-- (void)exitAnimationMode;// TODO: encapsulate to business
+- (void)exitAnimationMode;
 
 // Constant state
 @property (assign, nonatomic, readonly) DPCollectState collectState;
@@ -63,7 +63,7 @@ DEFINE_SINGLETON_FOR_HEADER(DPMainManager)
 @property (nonatomic, strong, readonly) DPMaskViewModel *currentMaskViewModel;
 @property (nonatomic, assign, readonly) NSInteger selecedIndexInEditMode; // TODO: encapsulate to business
 @property (nonatomic, strong, readonly) DPPageViewModel *selectedPageViewModelInEditMode;
-@property (nonatomic, copy) void (^takePhotoActionCallBack)();
+@property (nonatomic, copy) void (^takePhotoActionCallBack)(void);
 
 - (void)setCurrentMainViewModel:(DPMainViewModel *)currentMainViewModel;
 - (void)setCurrentPageViewModel:(DPPageViewModel *)currentPageViewModel;

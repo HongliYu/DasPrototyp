@@ -13,6 +13,7 @@
 #import "DPHomeViewController.h"
 #import "SVPullToRefresh.h"
 #import "AFNetworking.h"
+#import "DPDeviceUtils.h"
 
 @interface DPHomeBusiness()
 
@@ -174,8 +175,8 @@
   NSString *recipients = @"mailto:first@example.com&subject=my email!";
   NSString *body = @"&body=email body!";
   NSString *email = [NSString stringWithFormat:@"%@%@", recipients, body];
-  email = [email stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-  [[UIApplication sharedApplication] openURL:[NSURL URLWithString:email]];
+  email = [email stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]];
+  [[UIApplication sharedApplication] openURL:[NSURL URLWithString:email] options:@{} completionHandler:nil];
 }
 
 - (void)sendEmail:(DPMainViewModel *)mainViewModel {
@@ -192,16 +193,7 @@
 }
 
 - (void)displayComposerSheet:(DPMainViewModel *)mainViewModel {
-  NSString *deviceInfo = nil;
-  if (DEVICE_IS_IPHONE4s) {
-    deviceInfo = @"iPhone4s";
-  } else if (DEVICE_IS_IPHONE5) {
-    deviceInfo = @"iPhone5";
-  } else if (DEVICE_IS_IPHONE6) {
-    deviceInfo = @"iPhone6";
-  } else if (DEVICE_IS_IPHONE6_PLUS) {
-    deviceInfo = @"iPhone6Plus";
-  }
+  NSString *screenSize = [DPDeviceUtils checkDeviceScreen]; // TODO: 更新下载链接
   MFMailComposeViewController *mailPicker = [[MFMailComposeViewController alloc] init];
   mailPicker.mailComposeDelegate = self;
   [mailPicker setSubject:[NSString stringWithFormat:@"%@ -- %@", mainViewModel.title, NSLocalizedString(@"DasPrototyp", @"")]];
@@ -215,26 +207,35 @@
                        fileName:[NSString stringWithFormat:@"%@.dparchive", mainViewModel.title]];
   
   NSMutableString *emailBody = [NSMutableString string];
-  
-  if ([CurrentLanguage isEqualToString:@"zh-Hans"]) {
+  if ([CurrentLanguage containsString:@"zh-Hans"]) {
     [emailBody appendString:@"<h2>来自DP原型的示例</h2>\n"];
     [emailBody appendString:[NSString stringWithFormat:
-                             @"<div>#示例环境#</div> <div>设备型号: %@</div> <div>OS版本: %@</div>"
-                             @"<div>(请确保接接收方有相同型号的设备)接收方点击附件选择在DP原型中打开</div>\n",
-                            deviceInfo, [UIDevice currentDevice].systemVersion]];
+                             @"<div>#示例环境#</div> <div>屏幕大小: %@</div> <div>OS: %@</div>"
+                             @"<div>(请确保与接收方的设备屏幕大小一致)接收方点击附件选择在DP原型中打开</div>\n",
+                            screenSize, [UIDevice currentDevice].systemVersion]];
     [emailBody appendString:@"<a "
      @"href=\"https://itunes.apple.com/app/dasprototyp/"
      @"id910117892\">下载 DP原型</a>\n"];
   }
-  if ([CurrentLanguage isEqualToString:@"en"]) {
+  if ([CurrentLanguage containsString:@"en"]) {
     [emailBody appendString:@"<h2>Demo From DasPrototyp</h2>\n"];
     [emailBody appendString:[NSString stringWithFormat:
                              @"<div>#Demo environment#</div>"
-                             @"<div>model: %@</div> <div>OSVersion :%@</div>"
-                             @"(please make sure you have the right iOS device) Click the attachment and Open In DasPrototyp</div>\n",
-                             deviceInfo, [UIDevice currentDevice].systemVersion]];
+                             @"<div>Screen Size: %@</div> <div>OS :%@</div>"
+                             @"(please make sure all receivers have the right screen size) Click the attachment and Open In DasPrototyp</div>\n",
+                             screenSize, [UIDevice currentDevice].systemVersion]];
     [emailBody appendString:@"<a href=\"https://itunes.apple.com/app/dasprototyp/id910117892\">Download DasPrototyp</a>\n"];
   }
+  if ([CurrentLanguage containsString:@"de"]) {
+    [emailBody appendString:@"<h2>Demo von DasPrototyp</h2>\n"];
+    [emailBody appendString:[NSString stringWithFormat:
+                             @"<div>#Demo-Umgebung#</div>"
+                             @"<div>Bildschirmgröße: %@</div> <div>OS :%@</div>"
+                             @"(Vergewissern Sie sich, dass alle Empfänger die richtige Bildschirmgröße haben) Klicken Sie auf den Anhang und öffnen Sie in DasPrototyp</div>\n",
+                             screenSize, [UIDevice currentDevice].systemVersion]];
+    [emailBody appendString:@"<a href=\"https://itunes.apple.com/app/dasprototyp/id910117892\">Laden Sie DasPrototyp herunter</a>\n"];
+  }
+
   [mailPicker setMessageBody:emailBody isHTML:YES];
   [self.homeViewController presentViewController:mailPicker
                                         animated:YES

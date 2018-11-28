@@ -9,18 +9,14 @@
 #import "DPMainTableViewCell.h"
 #import "DPMainViewModel.h"
 
-const float kMainCellHeightNormal = 90.f;
+const float kMainCellHeightNormal = 88.f;
 static void *MainTableViewCellContextTitle = &MainTableViewCellContextTitle;
 static void *MainTableViewCellContextThumbnail = &MainTableViewCellContextThumbnail;
 static void *MainTableViewCellContextComment = &MainTableViewCellContextComment;
 
 @interface DPMainTableViewCell()
 
-@property (strong, nonatomic) IBOutlet NSLayoutConstraint *deleteButtonWidth;
-@property (strong, nonatomic) IBOutlet NSLayoutConstraint *shareButtonWidth;
-@property (strong, nonatomic) IBOutlet NSLayoutConstraint *renameButtonWidth;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *thumbnailWidth;
-
 @property (strong, nonatomic) IBOutlet UIButton *moreButton;
 @property (strong, nonatomic) IBOutlet UIButton *renameButton;
 @property (strong, nonatomic) IBOutlet UIButton *shareButton;
@@ -72,12 +68,19 @@ static void *MainTableViewCellContextComment = &MainTableViewCellContextComment;
 
 - (void)configBaseUI {
   self.thumbnailWidth.constant = SCREEN_PROPORTION * 80.f;
-  self.deleteButtonWidth.constant
-  = self.shareButtonWidth.constant
-  = self.renameButtonWidth.constant = SCREEN_WIDTH / 3.f;
   [self.moreButton.titleLabel setFont:[UIFont fontWithName:@"dp_iconfont" size:16.f]];
   self.thumbnailImageView.image = nil;
   self.thumbnailImageView.alpha = 0.4f;
+  [self updateAttributedButton:_renameButton withTitle:NSLocalizedString(@"Rename", @"")];
+  [self updateAttributedButton:_shareButton withTitle:NSLocalizedString(@"Share", @"")];
+  [self updateAttributedButton:_deleteButton withTitle:NSLocalizedString(@"Delete", @"")];
+}
+
+- (void)updateAttributedButton: (UIButton *)button
+                     withTitle: (NSString *)title {
+  NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithAttributedString:[button attributedTitleForState:UIControlStateNormal]];
+  [attributedString replaceCharactersInRange:NSMakeRange(0, attributedString.length) withString:title];
+  [button setAttributedTitle:attributedString forState:UIControlStateNormal];
 }
 
 - (void)updateUI {

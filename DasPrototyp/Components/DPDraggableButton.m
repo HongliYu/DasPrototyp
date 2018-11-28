@@ -195,23 +195,23 @@
     if (self.center.x >= middleX) {
       [UIView animateWithDuration:DP_AUTODOCKING_ANIMATE_DURATION animations:^{
         self.center = CGPointMake(superviewFrame.size.width - frame.size.width / 2, self.center.y);
-        if (_autoDockingBlock) {
-          _autoDockingBlock(self);
+        if (self.autoDockingBlock) {
+          self.autoDockingBlock(self);
         }
       } completion:^(BOOL finished) {
-        if (_autoDockingDoneBlock) {
-          _autoDockingDoneBlock(self);
+        if (self.autoDockingDoneBlock) {
+          self.autoDockingDoneBlock(self);
         }
       }];
     } else {
       [UIView animateWithDuration:DP_AUTODOCKING_ANIMATE_DURATION animations:^{
         self.center = CGPointMake(frame.size.width / 2, self.center.y);
-        if (_autoDockingBlock) {
-          _autoDockingBlock(self);
+        if (self.autoDockingBlock) {
+          self.autoDockingBlock(self);
         }
       } completion:^(BOOL finished) {
-        if (_autoDockingDoneBlock) {
-          _autoDockingDoneBlock(self);
+        if (self.autoDockingDoneBlock) {
+          self.autoDockingDoneBlock(self);
         }
       }];
     }

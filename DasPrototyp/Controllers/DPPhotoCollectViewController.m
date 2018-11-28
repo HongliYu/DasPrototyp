@@ -15,14 +15,13 @@
 #import "DPImageCrop.h"
 #import "DPMainViewModel.h"
 #import "DPPageViewModel.h"
+#import "DPDeviceUtils.h"
 
-@interface DPPhotoCollectViewController () <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UINavigationControllerDelegate, UIImagePickerControllerDelegate, DPImageCropDelegate>
+@interface DPPhotoCollectViewController () <UICollectionViewDataSource,
+UICollectionViewDelegateFlowLayout, UINavigationControllerDelegate,
+UIImagePickerControllerDelegate, DPImageCropDelegate>
 
 // normal mode
-@property (strong, nonatomic) IBOutlet NSLayoutConstraint *takePhotoButtonWidth;
-@property (strong, nonatomic) IBOutlet NSLayoutConstraint *albumButtonWidth;
-@property (strong, nonatomic) IBOutlet NSLayoutConstraint *palyButtonWidth;
-@property (strong, nonatomic) IBOutlet NSLayoutConstraint *commentButtonWidth;
 @property (strong, nonatomic) IBOutlet UIButton *takePhotoButton;
 @property (strong, nonatomic) IBOutlet UIButton *albumButton;
 @property (strong, nonatomic) IBOutlet UIButton *playButton;
@@ -35,11 +34,12 @@
 @property (weak, nonatomic) IBOutlet UILabel *photoCollectionTitleLabel;
 
 // edit mode
-@property (strong, nonatomic) IBOutlet NSLayoutConstraint *replaceButtonWidth;
-@property (strong, nonatomic) IBOutlet NSLayoutConstraint *deleteButtonWidth;
 @property (strong, nonatomic) IBOutlet UIView *editOptionsView;
 @property (strong, nonatomic) IBOutlet UIButton *repalceButton;
 @property (strong, nonatomic) IBOutlet UIButton *deleteButton;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *navigationBarHeight;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *tabBarHeight;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *tabBarHeightEditMode;
 
 @end
 
@@ -48,12 +48,12 @@
 #pragma mark - Life Cycle
 - (void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
-  [[UIApplication sharedApplication] setStatusBarHidden:YES];
+  [self prefersStatusBarHidden];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
   [super viewDidAppear:animated];
-  [[UIApplication sharedApplication] setStatusBarHidden:YES];
+  [self prefersStatusBarHidden];
 }
 
 - (void)viewDidLoad {
@@ -62,20 +62,6 @@
   [self configBaseUI];
   [self configBaseData];
   [self bindActions];
-  [self addNotifications];
-  [self configBusinessRouter];
-}
-
-- (void)viewDidDisappear:(BOOL)animated {
-  [super viewDidDisappear:animated];
-}
-
-- (void)dealloc {
-  
-}
-
-- (void)didReceiveMemoryWarning {
-  [super didReceiveMemoryWarning];
 }
 
 #pragma mark - State
@@ -87,16 +73,13 @@
 #pragma mark - UI
 - (void)configBaseUI {
   [self.photoCollectionTitleLabel setText:[DPMainManager sharedDPMainManager].currentMainViewModel.title];
+  [self.editButton setTitle:NSLocalizedString(@"Edit", @"") forState:UIControlStateNormal];
+  
   // edit mode
   [self.repalceButton.titleLabel setFont:[UIFont fontWithName:@"dp_iconfont" size:28.f]];
   [self.deleteButton.titleLabel setFont:[UIFont fontWithName:@"dp_iconfont" size:28.f]];
   [self.repalceButton setTitle:@"\U0000e90e" forState:UIControlStateNormal];
   [self.deleteButton setTitle:@"\U0000e9ac" forState:UIControlStateNormal];
-
-  // normal mode
-  self.takePhotoButtonWidth.constant = self.albumButtonWidth.constant
-  = self.palyButtonWidth.constant = self.commentButtonWidth.constant = SCREEN_WIDTH / 4.f;
-  self.deleteButtonWidth.constant = self.replaceButtonWidth.constant = SCREEN_WIDTH / 2.f;
   
   [self.takePhotoButton.titleLabel setFont:[UIFont fontWithName:@"dp_iconfont" size:28.f]];
   [self.albumButton.titleLabel setFont:[UIFont fontWithName:@"dp_iconfont" size:28.f]];
@@ -107,13 +90,16 @@
   [self.albumButton setTitle:@"\U0000e927" forState:UIControlStateNormal];
   [self.playButton setTitle:@"\U0000e929" forState:UIControlStateNormal];
   [self.commentButton setTitle:@"\U0000e926" forState:UIControlStateNormal];
-  
+
   [self.photoCollectionView registerNib:[UINib nibWithNibName:@"DPPhotoCollectionViewCell" bundle:nil]
              forCellWithReuseIdentifier:kPhotoCellIdentifier];
-//  [self.photoCollectionView registerClass:[DPPhotoCollectionViewCell class]
-//               forCellWithReuseIdentifier:kPhotoCellIdentifier];
   self.flowLayout.itemSize = CGSizeMake([DPMainManager sharedDPMainManager].photoCellSize.width,
                                         [DPMainManager sharedDPMainManager].photoCellSize.height);
+  if ([DPDeviceUtils checkIfDeviceHasBangs]) {
+    self.navigationBarHeight.constant = 44 + 44;
+    self.tabBarHeight.constant = 44 + 20;
+    self.tabBarHeightEditMode.constant = 44 + 20;
+  }
 }
 
 #pragma mark - Data
@@ -209,9 +195,7 @@
 - (IBAction)albumAction:(id)sender {
   UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
   imagePickerController.delegate = self;
-//  imagePickerController.allowsEditing = YES;
-//  imagePickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-  [[UIApplication sharedApplication] setStatusBarHidden:YES];
+  [self prefersStatusBarHidden];
   [self presentViewController:imagePickerController
                      animated:YES
                    completion:^{
@@ -235,23 +219,24 @@
   if (![[DPMainManager sharedDPMainManager].currentMainViewModel.pageViewModels firstObject]) {
     return;
   }
-  PSTAlertController *controller = [PSTAlertController actionSheetWithTitle:nil];
-  [controller addAction:[PSTAlertAction actionWithTitle:@"Album"
-                                                  style:PSTAlertActionStyleDestructive
-                                                handler:^(PSTAlertAction * _Nonnull action) {
-                                                  [self albumAction:self];
-                                                }]];
-  [controller addAction:[PSTAlertAction actionWithTitle:@"Take Photo"
-                                                  style:PSTAlertActionStyleDestructive
-                                                handler:^(PSTAlertAction * _Nonnull action) {
-                                                  [self takePhotoAction:self];
-                                                }]];
-  [controller addCancelActionWithHandler:nil];
-  [controller showWithSender:sender
-              arrowDirection:UIPopoverArrowDirectionAny
-                  controller:self
-                    animated:YES
-                  completion:nil];
+  UIAlertController *controller = [UIAlertController alertControllerWithTitle:nil
+                                                                      message:nil
+                                                               preferredStyle:UIAlertControllerStyleActionSheet];
+  [controller addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"Album", @"")
+                                                 style:UIAlertActionStyleDestructive
+                                               handler:^(UIAlertAction * _Nonnull action) {
+                                                 [self albumAction: self];
+                                               }]];
+  [controller addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"Take Photo", @"")
+                                                 style:UIAlertActionStyleDestructive
+                                               handler:^(UIAlertAction * _Nonnull action) {
+                                                 [self takePhotoAction: self];
+                                               }]];
+  [controller addAction:[UIAlertAction
+                         actionWithTitle:NSLocalizedString(@"Cancel", @"")
+                         style:UIAlertActionStyleCancel
+                         handler:nil]];
+  [self presentViewController:controller animated:YES completion:nil];
 }
 
 - (IBAction)deleteAction:(id)sender {
@@ -303,8 +288,9 @@
   if (photoCollectionViewCell) {
     DPPageViewModel *pageViewModel = [DPMainManager sharedDPMainManager].currentMainViewModel.pageViewModels[indexPath.row];
     [photoCollectionViewCell bindData:pageViewModel];
+    return photoCollectionViewCell;
   }
-  return photoCollectionViewCell;
+  return [[UICollectionViewCell alloc] init];
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -326,7 +312,7 @@
 #pragma mark UIImagePickerControllerDelegate
 - (void)imagePickerController:(UIImagePickerController *)picker
 didFinishPickingMediaWithInfo:(NSDictionary *)info {
-  [[UIApplication sharedApplication] setStatusBarHidden:YES]; // TODO: UIImagepicker custom design
+  [self prefersStatusBarHidden];
   DPImageCrop *imageCrop = [[DPImageCrop alloc] init];
   imageCrop.delegate = self;
   imageCrop.ratioOfWidthAndHeight = SCREEN_PROPORTION;
@@ -342,9 +328,11 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
 
 // 点击Cancel按钮后执行方法
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+  __weak typeof(self) weakSelf = self;
   [self dismissViewControllerAnimated:YES
                            completion:^{
-                             [[UIApplication sharedApplication] setStatusBarHidden:YES];
+                             __strong typeof(self) strongSelf = weakSelf;
+                             [strongSelf prefersStatusBarHidden];
                            }];
 }
 
@@ -386,16 +374,6 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
       });
     }
   });
-}
-
-#pragma mark - Notifications
-- (void)addNotifications {
-
-}
-
-#pragma mark - Business
-- (void)configBusinessRouter {
-  
 }
 
 @end
