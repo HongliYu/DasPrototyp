@@ -25,7 +25,6 @@ typedef NS_ENUM (NSUInteger, DPCollectState) {
 @interface DPMainManager : NSObject
 DEFINE_SINGLETON_FOR_HEADER(DPMainManager)
 
-// The first time open app
 - (void)checkIfNeedDemo;
 // mail attachemnt
 - (void)checkNewProjectWithDirectory:(NSString *)directory;
@@ -36,7 +35,7 @@ DEFINE_SINGLETON_FOR_HEADER(DPMainManager)
 // play mode
 - (void)enterPlayMode:(finishedCompletionHandler)completion;
 - (void)exitPlayMode;
-@property (nonatomic, assign, getter=isDoingAnimation) BOOL doingAnimation; // animation lock
+@property (nonatomic, assign, getter=isDoingAnimation) BOOL doingAnimation;
 - (void)enterAnimationMode;
 - (void)exitAnimationMode;
 
@@ -61,7 +60,7 @@ DEFINE_SINGLETON_FOR_HEADER(DPMainManager)
 @property (nonatomic, strong, readonly) DPMainViewModel *currentMainViewModel;
 @property (nonatomic, strong, readonly) DPPageViewModel *currentPageViewModel;
 @property (nonatomic, strong, readonly) DPMaskViewModel *currentMaskViewModel;
-@property (nonatomic, assign, readonly) NSInteger selecedIndexInEditMode; // TODO: encapsulate to business
+@property (nonatomic, assign, readonly) NSInteger selecedIndexInEditMode;
 @property (nonatomic, strong, readonly) DPPageViewModel *selectedPageViewModelInEditMode;
 @property (nonatomic, copy) void (^takePhotoActionCallBack)(void);
 

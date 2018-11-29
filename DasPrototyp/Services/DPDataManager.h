@@ -17,19 +17,21 @@
  */
 @interface DPDataManager : NSObject
 
-@property (strong, nonatomic) dispatch_queue_t dataQueue;
-
 #pragma mark - Network
-
-#pragma mark - User Default
-
-#pragma mark - Plist
+- (void)requestAphorismsCompletion:(resultCompletionHandler)completion;
+- (void)loginWithUserName:(NSString *)name
+              andPassword:(NSString *)password
+               completion:(resultCompletionHandler)completion;
 
 #pragma mark - File
 - (void)renameDirectory:(NSString *)originalDirectory
                    with:(NSString *)newDirectory;
 - (void)removeAll:(NSString *)path;
 - (void)removeFile:(NSString *)filePath;
+- (void)checkNewProjectWithDirectory:(NSString *)directory
+                          completion:(resultCompletionHandler)completion;
+- (void)createJSONDataWithMainViewModel:(DPMainViewModel *)mainViewModel
+                             completion:(finishedCompletionHandler)completion;
 
 #pragma mark - Database
 // insert
@@ -62,5 +64,11 @@
 
 // persist
 - (void)persistMainViewModel:(DPMainViewModel *)mainViewModel;
+
+#pragma mark - RAM
+- (void)createReferenceTreeWithPageViewModels:(NSMutableArray *)pageViewModels
+                                   completion:(finishedCompletionHandler)completion;
+- (void)createReferenceTreeWithMainViewModel:(DPMainViewModel *)mainViewModel
+                                  completion:(finishedCompletionHandler)completion;
 
 @end
