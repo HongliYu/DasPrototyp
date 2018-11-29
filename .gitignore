@@ -19,3 +19,6 @@ DerivedData
 # Pods - for those of you who use CocoaPods
 Pods
 GoogleService-Info.plist
+fastlane/
+Gemfile
+Gemfile.lock
